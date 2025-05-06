@@ -1,13 +1,11 @@
-<div
-  class="fixed top-0 left-0 w-screen h-screen overflow-hidden duration-1000 relative"
->
+<div class="fixed top-0 left-0 w-screen h-screen overflow-hidden relative">
   <div
-    class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
+    class="absolute inset-0 bg-cover bg-center transition-opacity duration-4000"
     style="background-image: url('img/background_day.png')"
     [ngClass]="{ 'opacity-100': isDayMode, 'opacity-0': !isDayMode }"
   ></div>
   <div
-    class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
+    class="absolute inset-0 bg-cover bg-center transition-opacity duration-4000"
     style="background-image: url('img/background_night.png')"
     [ngClass]="{ 'opacity-100': !isDayMode, 'opacity-0': isDayMode }"
   ></div>
