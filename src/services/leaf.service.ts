@@ -7,27 +7,37 @@ import { LeafModel } from '../models/leaf.model';
 export class LeafService {
   private leaves: LeafModel[] = [
     {
-      imageUrl: '/img/leaves/15_Da Hyeon Kang.png',
+      imageUrl: '/img/leaves/19_SoyeonKim_1.svg',
       link: 'https://wikipedia.nl/',
       position: this.generateRandomPosition(),
     },
     {
-      imageUrl: '/img/leaves/15_Da Hyeon Kang.png',
+      imageUrl: '/img/leaves/19_SoyeonKim_1.svg',
       link: 'https://wikipedia.nl/',
       position: this.generateRandomPosition(),
     },
     {
-      imageUrl: '/img/leaves/15_Da Hyeon Kang.png',
+      imageUrl: '/img/leaves/19_SoyeonKim_1.svg',
       link: 'https://wikipedia.nl/',
       position: this.generateRandomPosition(),
     },
     {
-      imageUrl: '/img/leaves/15_Da Hyeon Kang.png',
+      imageUrl: '/img/leaves/19_SoyeonKim_1.svg',
       link: 'https://wikipedia.nl/',
       position: this.generateRandomPosition(),
     },
     {
-      imageUrl: '/img/leaves/15_Da Hyeon Kang.png',
+      imageUrl: '/img/leaves/19_SoyeonKim_1.svg',
+      link: 'https://wikipedia.nl/',
+      position: this.generateRandomPosition(),
+    },
+    {
+      imageUrl: '/img/leaves/19_SoyeonKim_1.svg',
+      link: 'https://wikipedia.nl/',
+      position: this.generateRandomPosition(),
+    },
+    {
+      imageUrl: '/img/leaves/19_SoyeonKim_1.svg',
       link: 'https://wikipedia.nl/',
       position: this.generateRandomPosition(),
     },
