@@ -1,11 +1,16 @@
 <div
-  class="fixed top-0 left-0 w-screen h-screen bg-cover bg-center overflow-hidden duration-1000"
-  [ngStyle]="{
-    'background-image': isDayMode
-      ? 'url(\'img/background_day.png\')'
-      : 'url(\'img/background_night.png\')'
-  }"
+  class="fixed top-0 left-0 w-screen h-screen overflow-hidden duration-1000 relative"
 >
+  <div
+    class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
+    style="background-image: url('img/background_day.png')"
+    [ngClass]="{ 'opacity-100': isDayMode, 'opacity-0': !isDayMode }"
+  ></div>
+  <div
+    class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
+    style="background-image: url('img/background_night.png')"
+    [ngClass]="{ 'opacity-100': !isDayMode, 'opacity-0': isDayMode }"
+  ></div>
   <div
     class="absolute inset-0 flex items-center justify-center"
     (click)="onTitleClick()"
