@@ -1,17 +1,18 @@
 <button
-  class="w-10 h-10 rounded-full flex items-center justify-center focus:outline-none transition-all duration-300"
+  class="w-12 h-12 rounded-full flex items-center justify-center focus:outline-none transition-all duration-300 mb-4"
+  style="cursor: url('/img/ant.png') 28 10, pointer !important"
   (click)="toggleMode()"
 >
   <img
     *ngIf="mode === 'day'"
     src="/img/day-night/day.png"
     alt="Day mode"
-    class="w-8 h-8"
+    class="w-12 h-12"
   />
   <img
     *ngIf="mode === 'night'"
     src="/img/day-night/night.png"
     alt="Night mode"
-    class="w-8 h-8"
+    class="w-12 h-12"
   />
 </button>

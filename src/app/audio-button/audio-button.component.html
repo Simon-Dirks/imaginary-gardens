@@ -1,17 +1,18 @@
 <button
-  class="w-10 h-10 rounded-full flex items-center justify-center focus:outline-none transition-all duration-300"
+  class="w-12 h-12 rounded-full flex items-center justify-center focus:outline-none transition-all duration-300"
+  style="cursor: url('/img/ant.png') 28 10, pointer !important"
   (click)="toggleAudio()"
 >
   <img
     *ngIf="mode === 'on'"
     src="/img/audio/audio-on.png"
     alt="Audio on"
-    class="w-8 h-8"
+    class="w-12 h-12"
   />
   <img
     *ngIf="mode === 'off'"
     src="/img/audio/audio-off.png"
     alt="Audio off"
-    class="w-8 h-8"
+    class="w-12 h-12"
   />
 </button>

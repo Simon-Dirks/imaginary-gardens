@@ -12,6 +12,7 @@
     class="block opacity-40 hover:opacity-90 transition-opacity w-48"
     cdkDragHandle
     (click)="preventClickIfDragging($event)"
+    style="cursor: url('/img/ant.png') 28 10, pointer !important"
   >
     <img [src]="leaf.imageUrl" alt="Leaf image" />
   </a>
