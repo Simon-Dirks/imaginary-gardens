@@ -1,40 +1,77 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, inject } from '@angular/core';
 import { LeafModel } from '../../models/leaf.model';
 import { CommonModule } from '@angular/common';
 import { DragDropModule, CdkDragEnd } from '@angular/cdk/drag-drop';
 import { LeafService } from '../../services/leaf.service';
+import { interval, Subscription } from 'rxjs';
+import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-leaf',
   standalone: true,
   imports: [CommonModule, DragDropModule],
   templateUrl: './leaf.component.html',
-  styleUrl: './leaf.component.scss',
+  styleUrls: ['./leaf.component.scss'],
 })
-export class LeafComponent implements OnInit {
+export class LeafComponent implements OnInit, OnDestroy {
   @Input() leaf!: LeafModel;
   @Input() index!: number;
 
   dragPosition = { x: 0, y: 0 };
   isDragging = false;
+  verticalOffset = 0;
+  horizontalOffset = 0;
   private leafService = inject(LeafService);
-  
-  get cursorStyle(): { [key: string]: string } {
-    return {
-      cursor: this.isDragging 
-        ? "url('/img/ant-grabbing.png') 29 10, pointer !important"
-        : "url('/img/ant-hover.png') 28 10, pointer !important"
-    };
+  private sanitizer = inject(DomSanitizer);
+  private animationSubscription?: Subscription;
+
+  get combinedStyle(): SafeStyle {
+    const cursorStyle = this.isDragging
+      ? "url('/img/ant-grabbing.png') 29 10, pointer !important"
+      : "url('/img/ant-hover.png') 28 10, pointer !important";
+
+    return this.sanitizer.bypassSecurityTrustStyle(
+      `cursor: ${cursorStyle}; top: ${this.verticalOffset}px; left: ${this.horizontalOffset}px;`
+    );
   }
 
   ngOnInit(): void {
     if (this.leaf.position) {
       this.dragPosition = this.leaf.position;
     }
+    this.startRandomMovement();
+  }
+
+  ngOnDestroy(): void {
+    this.stopRandomMovement();
+  }
+
+  private startRandomMovement(): void {
+    this.updateRandomOffsets();
+
+    this.animationSubscription = interval(1000).subscribe(() => {
+      if (!this.isDragging) {
+        this.updateRandomOffsets();
+      }
+    });
+  }
+
+  private updateRandomOffsets(): void {
+    this.verticalOffset = Math.floor(Math.random() * 41) - 20; // Range from -20 to +20
+    this.horizontalOffset = Math.floor(Math.random() * 41) - 20; // Range from -20 to +20
+  }
+
+  private stopRandomMovement(): void {
+    if (this.animationSubscription) {
+      this.animationSubscription.unsubscribe();
+      this.animationSubscription = undefined;
+    }
   }
 
   onDragStarted(): void {
     this.isDragging = true;
+    this.verticalOffset = 0;
+    this.horizontalOffset = 0;
   }
 
   onDragEnded(event: CdkDragEnd): void {
@@ -46,10 +83,14 @@ export class LeafComponent implements OnInit {
     this.dragPosition = position;
     this.leaf.position = position;
 
+    this.verticalOffset = 0;
+    this.horizontalOffset = 0;
+
     this.leafService.updateLeafPosition(this.index, position);
 
     setTimeout(() => {
       this.isDragging = false;
+      this.updateRandomOffsets();
     }, 100);
   }
 

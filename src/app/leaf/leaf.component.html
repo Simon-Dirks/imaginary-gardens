@@ -4,15 +4,15 @@
   [cdkDragFreeDragPosition]="dragPosition"
   (cdkDragStarted)="onDragStarted()"
   (cdkDragEnded)="onDragEnded($event)"
-  class="absolute"
+  class="absolute opacity-50 hover:opacity-90 transition-opacity duration-300"
 >
   <a
     [href]="leaf.link"
     target="_blank"
-    class="block opacity-40 hover:opacity-90 transition-opacity w-48"
+    class="block w-48 relative transition-all ease-linear duration-[8000ms]"
     cdkDragHandle
     (click)="preventClickIfDragging($event)"
-    [style]="cursorStyle"
+    [style]="combinedStyle"
   >
     <img [src]="leaf.imageUrl" alt="Leaf image" />
   </a>
