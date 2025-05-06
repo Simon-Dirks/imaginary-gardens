@@ -26,8 +26,8 @@
     }"
   ></app-leaves>
 
-  <div class="bottom-12 right-6 absolute" *ngIf="currentModeAudioReady" [@fadeInControls]>
+  <div class="bottom-12 right-6 absolute">
     <app-day-night-button />
-    <app-audio-button />
+    <app-audio-button [@fadeInControls] />
   </div>
 </div>
