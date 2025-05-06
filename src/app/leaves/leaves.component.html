@@ -1,6 +1,10 @@
 <div
   [@leavesAnimation]="leavesState"
-  class="flex flex-wrap gap-4 justify-center mt-8"
+  class="relative w-full h-full min-h-screen"
 >
-  <app-leaf *ngFor="let leaf of leaves" [leaf]="leaf"></app-leaf>
+  <app-leaf 
+    *ngFor="let leaf of leaves; let i = index" 
+    [leaf]="leaf"
+    [index]="i"
+  ></app-leaf>
 </div>

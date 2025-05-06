@@ -1,8 +1,18 @@
-<a
+<div
   *ngIf="leaf"
-  [href]="leaf.link"
-  target="_blank"
-  class="block opacity-40 hover:opacity-90 transition-opacity cursor-pointer w-48"
+  cdkDrag
+  [cdkDragFreeDragPosition]="dragPosition"
+  (cdkDragStarted)="onDragStarted()"
+  (cdkDragEnded)="onDragEnded($event)"
+  class="absolute"
 >
-  <img [src]="leaf.imageUrl" alt="Leaf image" />
-</a>
+  <a
+    [href]="leaf.link"
+    target="_blank"
+    class="block opacity-40 hover:opacity-90 transition-opacity cursor-move w-48"
+    cdkDragHandle
+    (click)="preventClickIfDragging($event)"
+  >
+    <img [src]="leaf.imageUrl" alt="Leaf image" />
+  </a>
+</div>

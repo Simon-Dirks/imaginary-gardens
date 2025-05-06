@@ -43,4 +43,10 @@ export class LeafService {
       this.leaves.splice(index, 1);
     }
   }
+
+  updateLeafPosition(index: number, position: { x: number; y: number }): void {
+    if (index >= 0 && index < this.leaves.length) {
+      this.leaves[index].position = position;
+    }
+  }
 }
