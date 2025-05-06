@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LeafService } from '../../services/leaf.service';
+import { LeafService } from './leaf.service';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -8,15 +8,15 @@ import { BehaviorSubject } from 'rxjs';
 export class ImagePreloaderService {
   private imagesPreloaded = false;
   private preloadedImages: HTMLImageElement[] = [];
-  
+
   // Track background images loading status
   private _backgroundImagesLoaded = new BehaviorSubject<boolean>(false);
   public backgroundImagesLoaded$ = this._backgroundImagesLoaded.asObservable();
-  
+
   // Background image paths
   private backgroundImages = [
     'img/background_day.png',
-    'img/background_night.png'
+    'img/background_night.png',
   ];
 
   constructor(private leafService: LeafService) {}
@@ -60,9 +60,11 @@ export class ImagePreloaderService {
    */
   preloadBackgroundImages(): Promise<void> {
     console.log('Preloading background images:', this.backgroundImages);
-    
-    const imagePromises = this.backgroundImages.map(url => this.preloadImage(url));
-    
+
+    const imagePromises = this.backgroundImages.map((url) =>
+      this.preloadImage(url)
+    );
+
     return new Promise<void>((resolve) => {
       Promise.all(imagePromises)
         .then(() => {
@@ -70,7 +72,7 @@ export class ImagePreloaderService {
           this._backgroundImagesLoaded.next(true);
           resolve();
         })
-        .catch(error => {
+        .catch((error) => {
           console.error('Error preloading background images:', error);
           // Still set to true to not block the UI
           this._backgroundImagesLoaded.next(true);
@@ -78,7 +80,7 @@ export class ImagePreloaderService {
         });
     });
   }
-  
+
   private preloadImage(url: string): Promise<void> {
     return new Promise((resolve, reject) => {
       const img = new Image();

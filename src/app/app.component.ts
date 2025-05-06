@@ -4,10 +4,10 @@ import { TitleComponent } from './title/title.component';
 import { LeavesComponent } from './leaves/leaves.component';
 import { AudioButtonComponent } from './audio-button/audio-button.component';
 import { DayNightButtonComponent } from './day-night-button/day-night-button.component';
-import { DayNightService } from './services/day-night.service';
-import { SoundscapeService } from './services/soundscape.service';
-import { ImagePreloaderService } from './services/image-preloader.service';
-import { AudioService } from './services/audio.service';
+import { DayNightService } from '../services/day-night.service';
+import { SoundscapeService } from '../services/soundscape.service';
+import { ImagePreloaderService } from '../services/image-preloader.service';
+import { AudioService } from '../services/audio.service';
 import { Subject, takeUntil } from 'rxjs';
 import { trigger, style, animate, transition } from '@angular/animations';
 
