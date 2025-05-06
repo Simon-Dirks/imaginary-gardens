@@ -6,6 +6,7 @@ import { AudioButtonComponent } from './audio-button/audio-button.component';
 import { DayNightButtonComponent } from './day-night-button/day-night-button.component';
 import { DayNightService } from './services/day-night.service';
 import { SoundscapeService } from './services/soundscape.service';
+import { ImagePreloaderService } from './services/image-preloader.service';
 
 @Component({
   selector: 'app-root',
@@ -27,6 +28,7 @@ export class AppComponent implements OnInit {
   leavesState = 'hidden';
   private dayNightService = inject(DayNightService);
   private soundscapeService = inject(SoundscapeService);
+  private imagePreloaderService = inject(ImagePreloaderService);
 
   get isDayMode(): boolean {
     return this.dayNightService.currentMode === 'day';
@@ -34,7 +36,11 @@ export class AppComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.imagePreloaderService.preloadLeafImages().then(() => {
+      console.log('Images preloaded, app ready for animation');
+    });
+  }
 
   onTitleClick() {
     this.titleState = 'hidden';
