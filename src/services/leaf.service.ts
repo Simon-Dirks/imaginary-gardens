@@ -7,28 +7,24 @@ import { LeafModel } from '../models/leaf.model';
 export class LeafService {
   private leaves: LeafModel[] = [
     {
-      studentName: 'Emma Johnson',
-      title: 'Digital Garden',
-      subtitle: 'Exploring virtual ecosystems',
-      link: 'https://example.com/emma',
+      imageUrl: '/img/leaves/15_Da Hyeon Kang.png',
+      link: 'https://wikipedia.nl/',
     },
     {
-      studentName: 'Liam Smith',
-      title: 'Leaf Patterns',
-      subtitle: 'Nature-inspired algorithms',
-      link: 'https://example.com/liam',
+      imageUrl: '/img/leaves/15_Da Hyeon Kang.png',
+      link: 'https://wikipedia.nl/',
     },
     {
-      studentName: 'Olivia Davis',
-      title: 'Growth Simulation',
-      subtitle: 'Procedural plant generation',
-      link: 'https://example.com/olivia',
+      imageUrl: '/img/leaves/15_Da Hyeon Kang.png',
+      link: 'https://wikipedia.nl/',
     },
     {
-      studentName: 'Noah Wilson',
-      title: 'Garden Harmony',
-      subtitle: 'Interactive sound installation',
-      link: 'https://example.com/noah',
+      imageUrl: '/img/leaves/15_Da Hyeon Kang.png',
+      link: 'https://wikipedia.nl/',
+    },
+    {
+      imageUrl: '/img/leaves/15_Da Hyeon Kang.png',
+      link: 'https://wikipedia.nl/',
     },
   ];
 
