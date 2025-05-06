@@ -31,13 +31,20 @@ import { trigger, style, animate, transition } from '@angular/animations';
         animate('4s ease-out', style({ opacity: 1 })),
       ]),
     ]),
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('1500ms ease-in', style({ opacity: 1 })),
+      ]),
+    ]),
   ],
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'imaginary-gardens';
-  titleState: 'visible' | 'hiding' | 'hidden' = 'visible';
+  titleState: 'visible' | 'hiding' | 'hidden' = 'hidden';
   audioReady = false;
   currentModeAudioReady = false;
+  imagesLoaded = false;
   private destroy$ = new Subject<void>();
   private dayNightService = inject(DayNightService);
   private imagePreloaderService = inject(ImagePreloaderService);
@@ -50,9 +57,20 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor() {}
 
   ngOnInit(): void {
-    // Preload images
+    // Subscribe to background images loaded state
+    this.imagePreloaderService.backgroundImagesLoaded$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((loaded) => {
+        console.log('Background images loaded state:', loaded);
+        this.imagesLoaded = loaded;
+        if (loaded) {
+          this.titleState = 'visible';
+        }
+      });
+
+    // Preload all images (including background images)
     this.imagePreloaderService.preloadLeafImages().then(() => {
-      console.log('Images preloaded, app ready for animation');
+      console.log('All images preloaded, app ready for animation');
     });
 
     // Subscribe to audio ready states

@@ -26,17 +26,16 @@ import {
         'hiding',
         style({
           opacity: 0,
-          display: 'none',
         })
       ),
       state(
         'hidden',
         style({
           opacity: 0,
-          display: 'none',
         })
       ),
       transition('visible => hiding', [animate('2000ms ease-out')]),
+      transition('hidden => visible', [animate('4000ms 1.5s ease-out')]),
     ]),
   ],
 })

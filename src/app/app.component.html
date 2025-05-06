@@ -2,12 +2,18 @@
   <div
     class="absolute inset-0 bg-cover bg-center transition-opacity duration-4000"
     style="background-image: url('img/background_day.png')"
-    [ngClass]="{ 'opacity-100': isDayMode, 'opacity-0': !isDayMode }"
+    [ngClass]="{
+      'opacity-100': isDayMode && imagesLoaded,
+      'opacity-0': !isDayMode || !imagesLoaded
+    }"
   ></div>
   <div
     class="absolute inset-0 bg-cover bg-center transition-opacity duration-4000"
     style="background-image: url('img/background_night.png')"
-    [ngClass]="{ 'opacity-100': !isDayMode, 'opacity-0': isDayMode }"
+    [ngClass]="{
+      'opacity-100': !isDayMode && imagesLoaded,
+      'opacity-0': isDayMode || !imagesLoaded
+    }"
   ></div>
   <div
     class="absolute inset-0 flex items-center justify-center"
@@ -26,8 +32,8 @@
     }"
   ></app-leaves>
 
-  <div class="bottom-12 right-6 absolute">
+  <div class="bottom-12 right-6 absolute" [@fadeInControls]>
     <app-day-night-button />
-    <app-audio-button [@fadeInControls] />
+    <app-audio-button />
   </div>
 </div>
