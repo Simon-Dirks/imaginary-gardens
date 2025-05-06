@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { CommonModule, NgClass } from '@angular/common';
 import { TitleComponent } from './title/title.component';
 import { LeavesComponent } from './leaves/leaves.component';
@@ -8,6 +8,8 @@ import { DayNightService } from './services/day-night.service';
 import { SoundscapeService } from './services/soundscape.service';
 import { ImagePreloaderService } from './services/image-preloader.service';
 import { AudioService } from './services/audio.service';
+import { Subject, takeUntil } from 'rxjs';
+import { trigger, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
@@ -22,10 +24,21 @@ import { AudioService } from './services/audio.service';
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  animations: [
+    trigger('fadeInControls', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('4s ease-out', style({ opacity: 1 })),
+      ]),
+    ]),
+  ],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   title = 'imaginary-gardens';
   titleState: 'visible' | 'hiding' | 'hidden' = 'visible';
+  audioReady = false;
+  currentModeAudioReady = false;
+  private destroy$ = new Subject<void>();
   private dayNightService = inject(DayNightService);
   private imagePreloaderService = inject(ImagePreloaderService);
   private soundscapeService = inject(SoundscapeService);
@@ -37,9 +50,50 @@ export class AppComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
+    // Preload images
     this.imagePreloaderService.preloadLeafImages().then(() => {
       console.log('Images preloaded, app ready for animation');
     });
+
+    // Subscribe to audio ready states
+    this.soundscapeService.audioReady$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((ready) => {
+        console.log('All audio ready state changed:', ready);
+        this.audioReady = ready;
+      });
+
+    // Subscribe to day audio ready state
+    this.soundscapeService.dayAudioReady$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((ready) => {
+        console.log('Day audio ready state changed:', ready);
+        this.updateCurrentModeAudioReady();
+      });
+
+    // Subscribe to night audio ready state
+    this.soundscapeService.nightAudioReady$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((ready) => {
+        console.log('Night audio ready state changed:', ready);
+        this.updateCurrentModeAudioReady();
+      });
+
+    // Subscribe to day/night mode changes
+    this.dayNightService.mode$.pipe(takeUntil(this.destroy$)).subscribe(() => {
+      this.updateCurrentModeAudioReady();
+    });
+  }
+
+  // Update the current mode audio ready state
+  private updateCurrentModeAudioReady(): void {
+    this.currentModeAudioReady = this.soundscapeService.currentModeAudioReady;
+    console.log('Current mode audio ready:', this.currentModeAudioReady);
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   onTitleClick() {
