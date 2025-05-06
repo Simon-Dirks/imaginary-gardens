@@ -1,5 +1,8 @@
 <div
-  class="fixed top-0 left-0 w-screen h-screen bg-cover bg-center overflow-hidden bg-[url('/img/background_day.png')]"
+  class="fixed top-0 left-0 w-screen h-screen bg-cover bg-center overflow-hidden transition-all duration-1000"
+  [ngStyle]="{
+    'background-image': isDayMode ? 'url(\'img/background_day.png\')' : 'url(\'img/background_night.png\')'
+  }"
 >
   <div
     class="absolute inset-0 flex items-center justify-center"
