@@ -25,9 +25,7 @@ import { ImagePreloaderService } from './services/image-preloader.service';
 export class AppComponent implements OnInit {
   title = 'imaginary-gardens';
   titleState = 'visible';
-  leavesState = 'hidden';
   private dayNightService = inject(DayNightService);
-  private soundscapeService = inject(SoundscapeService);
   private imagePreloaderService = inject(ImagePreloaderService);
 
   get isDayMode(): boolean {
@@ -44,6 +42,5 @@ export class AppComponent implements OnInit {
 
   onTitleClick() {
     this.titleState = 'hidden';
-    this.leavesState = 'visible';
   }
 }

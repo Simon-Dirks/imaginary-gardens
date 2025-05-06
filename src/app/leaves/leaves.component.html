@@ -1,10 +1,8 @@
-<div
-  [@leavesAnimation]="leavesState"
-  class="relative w-full h-full min-h-screen"
->
-  <app-leaf 
-    *ngFor="let leaf of leaves; let i = index" 
+<div *ngIf="visible" class="relative w-full h-full min-h-screen">
+  <app-leaf
+    *ngFor="let leaf of leaves; let i = index"
     [leaf]="leaf"
     [index]="i"
+    [animationDelay]="getIntroAnimationDelay(i)"
   ></app-leaf>
 </div>

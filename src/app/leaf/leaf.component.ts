@@ -5,6 +5,7 @@ import { DragDropModule, CdkDragEnd } from '@angular/cdk/drag-drop';
 import { LeafService } from '../../services/leaf.service';
 import { interval, Subscription } from 'rxjs';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
+import { trigger, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-leaf',
@@ -12,10 +13,23 @@ import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
   imports: [CommonModule, DragDropModule],
   templateUrl: './leaf.component.html',
   styleUrls: ['./leaf.component.scss'],
+  animations: [
+    trigger('fadeIn', [
+      transition(
+        ':enter',
+        [
+          style({ opacity: 0 }),
+          animate('8s {{delay}}s ease-out', style({ opacity: 1 })),
+        ],
+        { params: { delay: 0 } }
+      ),
+    ]),
+  ],
 })
 export class LeafComponent implements OnInit, OnDestroy {
   @Input() leaf!: LeafModel;
   @Input() index!: number;
+  @Input() animationDelay: number = 0;
 
   dragPosition = { x: 0, y: 0 };
   isDragging = false;

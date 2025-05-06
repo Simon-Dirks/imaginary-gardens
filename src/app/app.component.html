@@ -22,7 +22,7 @@
   </div>
 
   <app-leaves
-    [leavesState]="leavesState"
+    [visible]="titleState === 'hidden'"
     [ngClass]="{
       'pointer-events-none': titleState === 'visible',
     }"

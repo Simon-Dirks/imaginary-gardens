@@ -1,19 +1,21 @@
-<div
-  *ngIf="leaf"
-  cdkDrag
-  [cdkDragFreeDragPosition]="dragPosition"
-  (cdkDragStarted)="onDragStarted()"
-  (cdkDragEnded)="onDragEnded($event)"
-  class="absolute opacity-50 hover:opacity-90 transition-opacity duration-300"
->
-  <a
-    [href]="leaf.link"
-    target="_blank"
-    class="block w-48 relative transition-all ease-linear duration-[8000ms]"
-    cdkDragHandle
-    (click)="preventClickIfDragging($event)"
-    [style]="combinedStyle"
+<div [@fadeIn]="{ value: '', params: { delay: animationDelay } }" *ngIf="leaf">
+  <div
+    cdkDrag
+    [cdkDragFreeDragPosition]="dragPosition"
+    (cdkDragStarted)="onDragStarted()"
+    (cdkDragEnded)="onDragEnded($event)"
+    class="absolute opacity-50 hover:opacity-90 transition-opacity duration-300"
+    [@.disabled]="isDragging"
   >
-    <img [src]="leaf.imageUrl" alt="Leaf image" />
-  </a>
+    <a
+      [href]="leaf.link"
+      target="_blank"
+      class="block w-48 relative transition-all ease-linear duration-[8000ms]"
+      cdkDragHandle
+      (click)="preventClickIfDragging($event)"
+      [style]="combinedStyle"
+    >
+      <img [src]="leaf.imageUrl" alt="Leaf image" />
+    </a>
+  </div>
 </div>
