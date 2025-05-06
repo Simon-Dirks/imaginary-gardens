@@ -5,6 +5,7 @@ import { LeavesComponent } from './leaves/leaves.component';
 import { AudioButtonComponent } from './audio-button/audio-button.component';
 import { DayNightButtonComponent } from './day-night-button/day-night-button.component';
 import { DayNightService } from './services/day-night.service';
+import { SoundscapeService } from './services/soundscape.service';
 
 @Component({
   selector: 'app-root',
@@ -25,6 +26,7 @@ export class AppComponent implements OnInit {
   titleState = 'visible';
   leavesState = 'hidden';
   private dayNightService = inject(DayNightService);
+  private soundscapeService = inject(SoundscapeService);
 
   get isDayMode(): boolean {
     return this.dayNightService.currentMode === 'day';
