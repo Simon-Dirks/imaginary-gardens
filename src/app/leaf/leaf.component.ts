@@ -18,6 +18,14 @@ export class LeafComponent implements OnInit {
   dragPosition = { x: 0, y: 0 };
   isDragging = false;
   private leafService = inject(LeafService);
+  
+  get cursorStyle(): { [key: string]: string } {
+    return {
+      cursor: this.isDragging 
+        ? "url('/img/ant-grabbing.png') 29 10, pointer !important"
+        : "url('/img/ant-hover.png') 28 10, pointer !important"
+    };
+  }
 
   ngOnInit(): void {
     if (this.leaf.position) {
