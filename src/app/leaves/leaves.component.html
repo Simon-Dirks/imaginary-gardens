@@ -1,0 +1,6 @@
+<div
+  [@leavesAnimation]="leavesState"
+  class="flex flex-wrap justify-center mt-8"
+>
+  <app-leaf *ngFor="let leaf of leaves" [leaf]="leaf"></app-leaf>
+</div>

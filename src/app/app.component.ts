@@ -1,24 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { LeafComponent } from "./leaf/leaf.component";
-import { LeafService } from "../services/leaf.service";
-import { LeafModel } from "../models/leaf.model";
 import { CommonModule } from '@angular/common';
+import { TitleComponent } from './title/title.component';
+import { LeavesComponent } from './leaves/leaves.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LeafComponent, CommonModule],
+  imports: [CommonModule, TitleComponent, LeavesComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
   title = 'imaginary-gardens';
-  leaves: LeafModel[] = [];
+  titleState = 'visible';
+  leavesState = 'hidden';
 
-  constructor(private leafService: LeafService) {}
+  constructor() {}
 
   ngOnInit(): void {
-    this.leaves = this.leafService.getLeaves();
+    setTimeout(() => {
+      this.titleState = 'hidden';
+
+      setTimeout(() => {
+        this.leavesState = 'visible';
+      }, 1000);
+    }, 1000);
   }
 }
