@@ -15,6 +15,10 @@ export class SoundscapeService implements OnDestroy {
   private _dayAudioReady = new BehaviorSubject<boolean>(false);
   private _nightAudioReady = new BehaviorSubject<boolean>(false);
   private _audioReady = new BehaviorSubject<boolean>(false);
+  
+  // Store the seek positions to resume playback
+  private daySeekPosition: number = 0;
+  private nightSeekPosition: number = 0;
 
   public dayAudioReady$ = this._dayAudioReady.asObservable();
   public nightAudioReady$ = this._nightAudioReady.asObservable();
@@ -116,16 +120,27 @@ export class SoundscapeService implements OnDestroy {
   }
 
   private updateSoundscape(mode: DayNightMode): void {
-    if (this.currentSoundscape) {
-      console.log(
-        `Stopping current ${mode === 'day' ? 'night' : 'day'} soundscape`
-      );
+    const previousMode = mode === 'day' ? 'night' : 'day';
+    const previousSoundscape = mode === 'day' ? this.nightSoundscape : this.daySoundscape;
+    
+    // Save the current position before switching
+    if (this.currentSoundscape && this.currentSoundscape.playing()) {
+      const currentSeek = this.currentSoundscape.seek() as number;
+      console.log(`Saving ${previousMode} position: ${currentSeek}s`);
+      
+      if (previousMode === 'day') {
+        this.daySeekPosition = currentSeek;
+      } else {
+        this.nightSeekPosition = currentSeek;
+      }
+      
+      // Stop the current soundscape
+      console.log(`Stopping current ${previousMode} soundscape`);
       this.currentSoundscape.stop();
     }
 
-    this.currentSoundscape =
-      mode === 'day' ? this.daySoundscape : this.nightSoundscape;
-
+    // Switch to the new soundscape
+    this.currentSoundscape = mode === 'day' ? this.daySoundscape : this.nightSoundscape;
     console.log(`Switched to ${mode} soundscape`);
 
     if (this.audioService.currentMode === 'on') {
@@ -138,8 +153,17 @@ export class SoundscapeService implements OnDestroy {
   private playSoundscape(): void {
     if (this.currentSoundscape && !this.currentSoundscape.playing()) {
       const mode = this.dayNightService.currentMode;
+      const seekPosition = mode === 'day' ? this.daySeekPosition : this.nightSeekPosition;
+      
+      // Start playing
       console.log(`Playing ${mode} soundscape`);
       this.currentSoundscape.play();
+      
+      // If we have a saved position, seek to it
+      if (seekPosition > 0) {
+        console.log(`Resuming ${mode} soundscape from ${seekPosition}s`);
+        this.currentSoundscape.seek(seekPosition);
+      }
     }
   }
 
