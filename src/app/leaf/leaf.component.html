@@ -1,0 +1,12 @@
+<div *ngIf="leaf">
+  <h3 class="text-lg font-bold">{{ leaf.title }}</h3>
+  <p class="text-sm text-gray-600">{{ leaf.subtitle }}</p>
+  <p class="text-xs mt-2">By {{ leaf.studentName }}</p>
+  <a
+    *ngIf="leaf.link"
+    [href]="leaf.link"
+    target="_blank"
+    class="text-blue-500 text-xs mt-1 block hover:underline"
+    >View Project</a
+  >
+</div>
