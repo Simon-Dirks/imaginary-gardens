@@ -1,1 +1,17 @@
-<p>audio-button works!</p>
+<button
+  class="w-10 h-10 rounded-full flex items-center justify-center focus:outline-none transition-all duration-300 cursor-pointer"
+  (click)="toggleAudio()"
+>
+  <img
+    *ngIf="mode === 'on'"
+    src="/img/audio/audio-on.png"
+    alt="Audio on"
+    class="w-8 h-8"
+  />
+  <img
+    *ngIf="mode === 'off'"
+    src="/img/audio/audio-off.png"
+    alt="Audio off"
+    class="w-8 h-8"
+  />
+</button>

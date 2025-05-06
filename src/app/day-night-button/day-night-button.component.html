@@ -1,1 +1,17 @@
-<p>day-night-button works!</p>
+<button
+  class="w-10 h-10 rounded-full flex items-center justify-center focus:outline-none transition-all duration-300 cursor-pointer"
+  (click)="toggleMode()"
+>
+  <img
+    *ngIf="mode === 'day'"
+    src="/img/day-night/day.png"
+    alt="Day mode"
+    class="w-8 h-8"
+  />
+  <img
+    *ngIf="mode === 'night'"
+    src="/img/day-night/night.png"
+    alt="Night mode"
+    class="w-8 h-8"
+  />
+</button>
