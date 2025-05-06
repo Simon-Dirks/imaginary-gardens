@@ -7,37 +7,92 @@ import { LeafModel } from '../models/leaf.model';
 export class LeafService {
   private leaves: LeafModel[] = [
     {
-      imageUrl: '/img/leaves/19_SoyeonKim_1.svg',
+      imageUrl: '/img/leaves/1_DalilaFermezza.png',
       link: 'https://wikipedia.nl/',
       position: this.generateRandomPosition(),
     },
     {
-      imageUrl: '/img/leaves/19_SoyeonKim_1.svg',
+      imageUrl: '/img/leaves/2_flora.png',
       link: 'https://wikipedia.nl/',
       position: this.generateRandomPosition(),
     },
     {
-      imageUrl: '/img/leaves/19_SoyeonKim_1.svg',
+      imageUrl: '/img/leaves/3_ismael.png',
       link: 'https://wikipedia.nl/',
       position: this.generateRandomPosition(),
     },
     {
-      imageUrl: '/img/leaves/19_SoyeonKim_1.svg',
+      imageUrl: '/img/leaves/4_Janelle_Linda.png',
       link: 'https://wikipedia.nl/',
       position: this.generateRandomPosition(),
     },
     {
-      imageUrl: '/img/leaves/19_SoyeonKim_1.svg',
+      imageUrl: '/img/leaves/5_Maria_Helena.png',
       link: 'https://wikipedia.nl/',
       position: this.generateRandomPosition(),
     },
     {
-      imageUrl: '/img/leaves/19_SoyeonKim_1.svg',
+      imageUrl: '/img/leaves/6_Marie Garreyn.png',
       link: 'https://wikipedia.nl/',
       position: this.generateRandomPosition(),
     },
     {
-      imageUrl: '/img/leaves/19_SoyeonKim_1.svg',
+      imageUrl: '/img/leaves/7_Mia Domenech Puras.png',
+      link: 'https://wikipedia.nl/',
+      position: this.generateRandomPosition(),
+    },
+    {
+      imageUrl: '/img/leaves/8_Ning-Ju Hsu.png',
+      link: 'https://wikipedia.nl/',
+      position: this.generateRandomPosition(),
+    },
+    {
+      imageUrl: '/img/leaves/9_Rafaela Aguilar Bostock.png',
+      link: 'https://wikipedia.nl/',
+      position: this.generateRandomPosition(),
+    },
+    {
+      imageUrl: '/img/leaves/10_Sarah_Alena.png',
+      link: 'https://wikipedia.nl/',
+      position: this.generateRandomPosition(),
+    },
+    {
+      imageUrl: '/img/leaves/11_Silver.png',
+      link: 'https://wikipedia.nl/',
+      position: this.generateRandomPosition(),
+    },
+    {
+      imageUrl: '/img/leaves/12_Yosuke.png',
+      link: 'https://wikipedia.nl/',
+      position: this.generateRandomPosition(),
+    },
+    {
+      imageUrl: '/img/leaves/13_Yuji.png',
+      link: 'https://wikipedia.nl/',
+      position: this.generateRandomPosition(),
+    },
+    {
+      imageUrl: '/img/leaves/15_Da Hyeon Kang.png',
+      link: 'https://wikipedia.nl/',
+      position: this.generateRandomPosition(),
+    },
+    {
+      imageUrl: '/img/leaves/16_JaeYoung.png',
+      link: 'https://wikipedia.nl/',
+      position: this.generateRandomPosition(),
+    },
+    {
+      imageUrl: '/img/leaves/17_SadeEkwedike.png',
+      link: 'https://wikipedia.nl/',
+      position: this.generateRandomPosition(),
+    },
+    {
+      imageUrl: '/img/leaves/18_MadoNullans.png',
+      link: 'https://wikipedia.nl/',
+      position: this.generateRandomPosition(),
+    },
+    {
+      imageUrl: '/img/leaves/19_SoyeonKim.png',
       link: 'https://wikipedia.nl/',
       position: this.generateRandomPosition(),
     },
