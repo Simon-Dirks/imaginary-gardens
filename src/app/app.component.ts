@@ -24,7 +24,7 @@ import { ImagePreloaderService } from './services/image-preloader.service';
 })
 export class AppComponent implements OnInit {
   title = 'imaginary-gardens';
-  titleState = 'visible';
+  titleState: 'visible' | 'hiding' | 'hidden' = 'visible';
   private dayNightService = inject(DayNightService);
   private imagePreloaderService = inject(ImagePreloaderService);
 
@@ -41,6 +41,9 @@ export class AppComponent implements OnInit {
   }
 
   onTitleClick() {
-    this.titleState = 'hidden';
+    this.titleState = 'hiding';
+    setTimeout(() => {
+      this.titleState = 'hidden';
+    }, 2000);
   }
 }

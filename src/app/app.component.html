@@ -15,7 +15,7 @@
     class="absolute inset-0 flex items-center justify-center"
     (click)="onTitleClick()"
     [ngClass]="{
-      'pointer-events-none': titleState === 'hidden',
+      'pointer-events-none': titleState === 'hiding' || titleState === 'hidden',
     }"
   >
     <app-title [titleState]="titleState"></app-title>
@@ -24,7 +24,7 @@
   <app-leaves
     [visible]="titleState === 'hidden'"
     [ngClass]="{
-      'pointer-events-none': titleState === 'visible',
+      'pointer-events-none': titleState === 'visible' || titleState === 'hiding',
     }"
   ></app-leaves>
 
