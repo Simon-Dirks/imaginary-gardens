@@ -2,14 +2,21 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule, NgClass } from '@angular/common';
 import { TitleComponent } from './title/title.component';
 import { LeavesComponent } from './leaves/leaves.component';
-import { AudioButtonComponent } from "./audio-button/audio-button.component";
-import { DayNightButtonComponent } from "./day-night-button/day-night-button.component";
+import { AudioButtonComponent } from './audio-button/audio-button.component';
+import { DayNightButtonComponent } from './day-night-button/day-night-button.component';
 import { DayNightService } from './services/day-night.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, NgClass, TitleComponent, LeavesComponent, AudioButtonComponent, DayNightButtonComponent],
+  imports: [
+    CommonModule,
+    NgClass,
+    TitleComponent,
+    LeavesComponent,
+    AudioButtonComponent,
+    DayNightButtonComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -25,13 +32,10 @@ export class AppComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    setTimeout(() => {
-      this.titleState = 'hidden';
+  ngOnInit(): void {}
 
-      setTimeout(() => {
-        this.leavesState = 'visible';
-      }, 1000);
-    }, 1000);
+  onTitleClick() {
+    this.titleState = 'hidden';
+    this.leavesState = 'visible';
   }
 }

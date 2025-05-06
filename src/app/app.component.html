@@ -2,11 +2,21 @@
   class="fixed top-0 left-0 w-screen h-screen bg-cover bg-center overflow-auto bg-[url('/img/background_day.png')]"
 >
   <div
-    class="container mx-auto h-full flex flex-col items-center justify-center"
+    class="absolute inset-0 flex items-center justify-center cursor-pointer"
+    (click)="onTitleClick()"
+    [ngClass]="{
+      'pointer-events-none': titleState === 'hidden',
+    }"
   >
     <app-title [titleState]="titleState"></app-title>
-    <app-leaves [leavesState]="leavesState"></app-leaves>
   </div>
+
+  <app-leaves
+    [leavesState]="leavesState"
+    [ngClass]="{
+      'pointer-events-none': titleState === 'visible',
+    }"
+  ></app-leaves>
 
   <div class="bottom-4 right-2 absolute">
     <app-audio-button />
