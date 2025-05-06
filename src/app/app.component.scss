@@ -1,6 +1,15 @@
+@font-face {
+  font-family: "Ouvrieres-affamees";
+  src: url("/fonts/Ouvrieres-affamees.woff2") format("woff2");
+}
+
 .background-container {
-  background: url('/img/background_day.png');
+  background: url("/img/background_day.png");
   background-size: cover;
   background-position: center;
   overflow: auto;
+}
+
+* {
+  font-family: "Ouvrieres-affamees", sans-serif;
 }
