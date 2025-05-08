@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DayNightService } from '../../services/day-night.service';
 import {
   trigger,
   state,
@@ -41,6 +42,11 @@ import {
 })
 export class TitleComponent implements OnInit {
   @Input() titleState: string = 'visible';
+  private dayNightService = inject(DayNightService);
+
+  get textColor(): string {
+    return this.dayNightService.currentMode === 'day' ? 'rgb(0,0,0)' : 'rgb(230,230,230)';
+  }
 
   constructor() {}
 
