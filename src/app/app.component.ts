@@ -12,6 +12,8 @@ import { Subject, takeUntil } from 'rxjs';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { BackgroundComponent } from './background/background.component';
 import { IndexButtonComponent } from './index-button/index-button.component';
+import { IndexOverlayComponent } from './index-overlay/index-overlay.component';
+import { IndexService } from '../services/index.service';
 
 @Component({
   selector: 'app-root',
@@ -25,6 +27,7 @@ import { IndexButtonComponent } from './index-button/index-button.component';
     DayNightButtonComponent,
     BackgroundComponent,
     IndexButtonComponent,
+    IndexOverlayComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -53,6 +56,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private dayNightService = inject(DayNightService);
   private imagePreloaderService = inject(ImagePreloaderService);
   private soundscapeService = inject(SoundscapeService);
+  public indexService = inject(IndexService);
 
   constructor() {}
 
