@@ -4,17 +4,19 @@ import { BehaviorSubject } from 'rxjs';
 export type DayNightMode = 'day' | 'night';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DayNightService {
   private _mode = new BehaviorSubject<DayNightMode>('day');
   public mode$ = this._mode.asObservable();
 
   constructor() {
-    // Initialize from localStorage if available
-    const savedMode = localStorage.getItem('dayNightMode');
-    if (savedMode === 'day' || savedMode === 'night') {
-      this._mode.next(savedMode);
+    const now = new Date();
+    const hour = now.getHours();
+    if (hour >= 20 || hour < 7) {
+      this._mode.next('night');
+    } else {
+      this._mode.next('day');
     }
   }
 
@@ -25,6 +27,5 @@ export class DayNightService {
   public toggle(): void {
     const newMode = this._mode.value === 'day' ? 'night' : 'day';
     this._mode.next(newMode);
-    localStorage.setItem('dayNightMode', newMode);
   }
 }
