@@ -45,7 +45,9 @@ export class TitleComponent implements OnInit {
   private dayNightService = inject(DayNightService);
 
   get textColor(): string {
-    return this.dayNightService.currentMode === 'day' ? 'rgb(0,0,0)' : 'rgb(230,230,230)';
+    return this.dayNightService.currentMode === 'day'
+      ? 'rgb(0,0,0)'
+      : 'rgb(230,230,230)';
   }
 
   constructor() {}
