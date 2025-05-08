@@ -35,6 +35,8 @@ export class ImagePreloaderService {
       'img/day-night/night.png',
       'img/audio/audio-on.png',
       'img/audio/audio-off.png',
+      'img/audio/audio-on-night.png',
+      'img/audio/audio-off-night.png',
     ];
     const allImages = [...imageUrls, ...otherImages];
 
