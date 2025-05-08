@@ -10,6 +10,7 @@ import { ImagePreloaderService } from '../services/image-preloader.service';
 import { AudioService } from '../services/audio.service';
 import { Subject, takeUntil } from 'rxjs';
 import { trigger, style, animate, transition } from '@angular/animations';
+import { BackgroundComponent } from "./background/background.component";
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,8 @@ import { trigger, style, animate, transition } from '@angular/animations';
     LeavesComponent,
     AudioButtonComponent,
     DayNightButtonComponent,
-  ],
+    BackgroundComponent
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   animations: [
@@ -49,10 +51,6 @@ export class AppComponent implements OnInit, OnDestroy {
   private dayNightService = inject(DayNightService);
   private imagePreloaderService = inject(ImagePreloaderService);
   private soundscapeService = inject(SoundscapeService);
-
-  get isDayMode(): boolean {
-    return this.dayNightService.currentMode === 'day';
-  }
 
   constructor() {}
 
