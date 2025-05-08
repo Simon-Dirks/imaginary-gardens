@@ -122,37 +122,49 @@ export class LeafService {
 
   constructor() {}
 
-  public verticalSpreadFactor = 4;
+  public verticalSpreadFactor = 3;
 
   getLeaves(): LeafModel[] {
     const viewportWidth =
       window.innerWidth || document.documentElement.clientWidth;
     const viewportHeight =
       window.innerHeight || document.documentElement.clientHeight;
-    const center = { x: viewportWidth / 2, y: viewportHeight / 2 };
-    const scaleX = viewportWidth / this.referenceWidth;
-    const scaleY = viewportHeight / this.referenceHeight;
 
-    const widthRatio = Math.min(1, viewportWidth / this.referenceWidth);
-    const spreadMultiplier =
-      1 + (1 - widthRatio) * (this.verticalSpreadFactor - 1);
-
-    const minDy = Math.min(...this.leavesOffsets.map((l) => l.dy));
-
-    return this.leavesOffsets.map((leaf) => {
-      let extraSpread = 0;
-      if (leaf.dy > minDy) {
-        extraSpread = (leaf.dy - minDy) * (spreadMultiplier - 1);
-      }
-      return {
+    if (viewportWidth < 512) {
+      const topPadding = 50;
+      const leafSpacing = 200;
+      return this.leavesOffsets.map((leaf, i) => ({
         imageUrl: leaf.imageUrl,
         link: leaf.link,
         position: {
-          x: center.x + leaf.dx * scaleX - 90,
-          y: center.y + (leaf.dy + extraSpread) * scaleY - 100,
+          x: viewportWidth / 2 - 150,
+          y: topPadding + leafSpacing * i,
         },
-      };
-    });
+      }));
+    } else {
+      // Original layout for larger screens
+      const center = { x: viewportWidth / 2, y: viewportHeight / 2 };
+      const scaleX = viewportWidth / this.referenceWidth;
+      const scaleY = viewportHeight / this.referenceHeight;
+      const widthRatio = Math.min(1, viewportWidth / this.referenceWidth);
+      const spreadMultiplier =
+        1 + (1 - widthRatio) * (this.verticalSpreadFactor - 1);
+      const minDy = Math.min(...this.leavesOffsets.map((l) => l.dy));
+      return this.leavesOffsets.map((leaf) => {
+        let extraSpread = 0;
+        if (leaf.dy > minDy) {
+          extraSpread = (leaf.dy - minDy) * (spreadMultiplier - 1);
+        }
+        return {
+          imageUrl: leaf.imageUrl,
+          link: leaf.link,
+          position: {
+            x: center.x + leaf.dx * scaleX - 90,
+            y: center.y + (leaf.dy + extraSpread) * scaleY - 100,
+          },
+        };
+      });
+    }
   }
 
   addLeaf(leaf: {
