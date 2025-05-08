@@ -57,7 +57,10 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor() {}
 
   ngOnInit(): void {
-    // Subscribe to background images loaded state
+    document.addEventListener('mousedown', this.handleMouseDown);
+    document.addEventListener('mouseup', this.handleMouseUp);
+    document.addEventListener('mouseleave', this.handleMouseUp);
+
     this.imagePreloaderService.backgroundImagesLoaded$
       .pipe(takeUntil(this.destroy$))
       .subscribe((loaded) => {
@@ -68,12 +71,10 @@ export class AppComponent implements OnInit, OnDestroy {
         }
       });
 
-    // Preload all images (including background images)
     this.imagePreloaderService.preloadLeafImages().then(() => {
       console.log('All images preloaded, app ready for animation');
     });
 
-    // Subscribe to audio ready states
     this.soundscapeService.audioReady$
       .pipe(takeUntil(this.destroy$))
       .subscribe((ready) => {
@@ -81,7 +82,6 @@ export class AppComponent implements OnInit, OnDestroy {
         this.audioReady = ready;
       });
 
-    // Subscribe to day audio ready state
     this.soundscapeService.dayAudioReady$
       .pipe(takeUntil(this.destroy$))
       .subscribe((ready) => {
@@ -89,7 +89,6 @@ export class AppComponent implements OnInit, OnDestroy {
         this.updateCurrentModeAudioReady();
       });
 
-    // Subscribe to night audio ready state
     this.soundscapeService.nightAudioReady$
       .pipe(takeUntil(this.destroy$))
       .subscribe((ready) => {
@@ -97,13 +96,11 @@ export class AppComponent implements OnInit, OnDestroy {
         this.updateCurrentModeAudioReady();
       });
 
-    // Subscribe to day/night mode changes
     this.dayNightService.mode$.pipe(takeUntil(this.destroy$)).subscribe(() => {
       this.updateCurrentModeAudioReady();
     });
   }
 
-  // Update the current mode audio ready state
   private updateCurrentModeAudioReady(): void {
     this.currentModeAudioReady = this.soundscapeService.currentModeAudioReady;
     console.log('Current mode audio ready:', this.currentModeAudioReady);
@@ -112,6 +109,10 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+
+    document.removeEventListener('mousedown', this.handleMouseDown);
+    document.removeEventListener('mouseup', this.handleMouseUp);
+    document.removeEventListener('mouseleave', this.handleMouseUp);
   }
 
   onTitleClick() {
@@ -120,4 +121,12 @@ export class AppComponent implements OnInit, OnDestroy {
       this.titleState = 'hidden';
     }, 2000);
   }
+
+  private handleMouseDown = (): void => {
+    document.body.classList.add('ant-grabbing');
+  };
+
+  private handleMouseUp = (): void => {
+    document.body.classList.remove('ant-grabbing');
+  };
 }

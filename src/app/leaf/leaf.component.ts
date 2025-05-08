@@ -40,9 +40,7 @@ export class LeafComponent implements OnInit, OnDestroy {
   private animationSubscription?: Subscription;
 
   get combinedStyle(): SafeStyle {
-    const cursorStyle = this.isDragging
-      ? "url('/img/ant-grabbing.png') 29 10, pointer !important"
-      : "url('/img/ant-hover.png') 28 10, pointer !important";
+    const cursorStyle = "url('/img/ant-hover.png') 28 10, pointer !important";
 
     return this.sanitizer.bypassSecurityTrustStyle(
       `cursor: ${cursorStyle}; top: ${this.verticalOffset}px; left: ${this.horizontalOffset}px;`
