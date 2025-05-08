@@ -4,7 +4,9 @@
   [ngClass]="showInCorner ? 'text-left p-8' : 'text-center p-12 sm:text-[7rem]'"
   [style.color]="textColor"
 >
-  <span class="transition-all duration-[3500ms] opacity-100 md:opacity-0"
+  <span
+    class="transition-all duration-[3500ms]"
+    [ngClass]="showInCorner ? ' md:opacity-0 opacity-100' : ''"
     >Imaginary Gardens</span
   >
 </h1>
