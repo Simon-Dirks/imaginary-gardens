@@ -10,7 +10,8 @@ import { ImagePreloaderService } from '../services/image-preloader.service';
 import { AudioService } from '../services/audio.service';
 import { Subject, takeUntil } from 'rxjs';
 import { trigger, style, animate, transition } from '@angular/animations';
-import { BackgroundComponent } from "./background/background.component";
+import { BackgroundComponent } from './background/background.component';
+import { IndexButtonComponent } from './index-button/index-button.component';
 
 @Component({
   selector: 'app-root',
@@ -22,8 +23,9 @@ import { BackgroundComponent } from "./background/background.component";
     LeavesComponent,
     AudioButtonComponent,
     DayNightButtonComponent,
-    BackgroundComponent
-],
+    BackgroundComponent,
+    IndexButtonComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   animations: [

@@ -1,0 +1,40 @@
+<button
+  class="w-12 h-12 rounded-full flex items-center justify-center focus:outline-none transition-all duration-300 mb-4"
+  style="cursor: url('/img/ant-hover.png') 28 10, pointer !important"
+  (click)="toggleIndex()"
+>
+  <span class="relative w-12 h-12 block">
+    <!-- Day mode, not showing -->
+    <img
+      src="/img/index/day.png"
+      alt="Index button day"
+      class="w-12 h-12 absolute inset-0 transition-opacity duration-2000"
+      [style.opacity]="mode === 'day' && !isShowing ? 1 : 0"
+      [style.pointerEvents]="mode === 'day' && !isShowing ? 'auto' : 'none'"
+    />
+    <!-- Day mode, showing -->
+    <img
+      src="/img/index/day-showing.png"
+      alt="Index button day showing"
+      class="w-12 h-12 absolute inset-0 transition-opacity duration-2000"
+      [style.opacity]="mode === 'day' && isShowing ? 1 : 0"
+      [style.pointerEvents]="mode === 'day' && isShowing ? 'auto' : 'none'"
+    />
+    <!-- Night mode, not showing -->
+    <img
+      src="/img/index/night.png"
+      alt="Index button night"
+      class="w-12 h-12 absolute inset-0 transition-opacity duration-2000"
+      [style.opacity]="mode === 'night' && !isShowing ? 1 : 0"
+      [style.pointerEvents]="mode === 'night' && !isShowing ? 'auto' : 'none'"
+    />
+    <!-- Night mode, showing -->
+    <img
+      src="/img/index/night-showing.png"
+      alt="Index button night showing"
+      class="w-12 h-12 absolute inset-0 transition-opacity duration-2000"
+      [style.opacity]="mode === 'night' && isShowing ? 1 : 0"
+      [style.pointerEvents]="mode === 'night' && isShowing ? 'auto' : 'none'"
+    />
+  </span>
+</button>
