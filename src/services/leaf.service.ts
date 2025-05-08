@@ -122,6 +122,8 @@ export class LeafService {
 
   constructor() {}
 
+  public verticalSpreadFactor = 4;
+
   getLeaves(): LeafModel[] {
     const viewportWidth =
       window.innerWidth || document.documentElement.clientWidth;
@@ -130,14 +132,27 @@ export class LeafService {
     const center = { x: viewportWidth / 2, y: viewportHeight / 2 };
     const scaleX = viewportWidth / this.referenceWidth;
     const scaleY = viewportHeight / this.referenceHeight;
-    return this.leavesOffsets.map((leaf) => ({
-      imageUrl: leaf.imageUrl,
-      link: leaf.link,
-      position: {
-        x: center.x + leaf.dx * scaleX - 90,
-        y: center.y + leaf.dy * scaleY - 100,
-      },
-    }));
+
+    const widthRatio = Math.min(1, viewportWidth / this.referenceWidth);
+    const spreadMultiplier =
+      1 + (1 - widthRatio) * (this.verticalSpreadFactor - 1);
+
+    const minDy = Math.min(...this.leavesOffsets.map((l) => l.dy));
+
+    return this.leavesOffsets.map((leaf) => {
+      let extraSpread = 0;
+      if (leaf.dy > minDy) {
+        extraSpread = (leaf.dy - minDy) * (spreadMultiplier - 1);
+      }
+      return {
+        imageUrl: leaf.imageUrl,
+        link: leaf.link,
+        position: {
+          x: center.x + leaf.dx * scaleX - 90,
+          y: center.y + (leaf.dy + extraSpread) * scaleY - 100,
+        },
+      };
+    });
   }
 
   addLeaf(leaf: {
