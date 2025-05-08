@@ -1,6 +1,12 @@
 <div class="fixed top-0 left-0 w-screen h-screen overflow-hidden relative">
   <app-background [imagesLoaded]="imagesLoaded"></app-background>
 
+  <app-title
+    class="absolute top-0 left-0"
+    [showInCorner]="true"
+    [titleState]="titleState === 'hidden' ? 'visible' : 'hidden'"
+  ></app-title>
+
   <div
     class="absolute inset-0 flex items-center justify-center"
     (click)="onTitleClick()"
