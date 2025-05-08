@@ -123,13 +123,19 @@ export class LeafService {
   constructor() {}
 
   getLeaves(): LeafModel[] {
-    const center = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    const viewportWidth =
+      window.innerWidth || document.documentElement.clientWidth;
+    const viewportHeight =
+      window.innerHeight || document.documentElement.clientHeight;
+    const center = { x: viewportWidth / 2, y: viewportHeight / 2 };
+    const scaleX = viewportWidth / this.referenceWidth;
+    const scaleY = viewportHeight / this.referenceHeight;
     return this.leavesOffsets.map((leaf) => ({
       imageUrl: leaf.imageUrl,
       link: leaf.link,
       position: {
-        x: center.x + leaf.dx,
-        y: center.y + leaf.dy,
+        x: center.x + leaf.dx * scaleX - 90,
+        y: center.y + leaf.dy * scaleY - 100,
       },
     }));
   }
