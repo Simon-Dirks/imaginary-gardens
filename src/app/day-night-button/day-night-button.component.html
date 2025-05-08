@@ -3,16 +3,20 @@
   style="cursor: url('/img/ant-hover.png') 28 10, pointer !important"
   (click)="toggleMode()"
 >
-  <img
-    *ngIf="mode === 'day'"
-    src="/img/day-night/day.png"
-    alt="Day mode"
-    class="w-12 h-12"
-  />
-  <img
-    *ngIf="mode === 'night'"
-    src="/img/day-night/night.png"
-    alt="Night mode"
-    class="w-12 h-12"
-  />
+  <span class="relative w-12 h-12 block">
+    <img
+      src="/img/day-night/day.png"
+      alt="Day mode"
+      class="w-12 h-12 absolute inset-0 transition-opacity duration-2000"
+      [style.opacity]="mode === 'day' ? 1 : 0"
+      [style.pointerEvents]="mode === 'day' ? 'auto' : 'none'"
+    />
+    <img
+      src="/img/day-night/night.png"
+      alt="Night mode"
+      class="w-12 h-12 absolute inset-0 transition-opacity duration-2000"
+      [style.opacity]="mode === 'night' ? 1 : 0"
+      [style.pointerEvents]="mode === 'night' ? 'auto' : 'none'"
+    />
+  </span>
 </button>

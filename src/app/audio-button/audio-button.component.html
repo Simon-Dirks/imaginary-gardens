@@ -3,28 +3,34 @@
   style="cursor: url('/img/ant-hover.png') 28 10, pointer !important"
   (click)="toggleAudio()"
 >
-  <img
-    *ngIf="mode === 'on' && isDayMode"
-    src="/img/audio/audio-on.png"
-    alt="Audio on"
-    class="w-12 h-12"
-  />
-  <img
-    *ngIf="mode === 'off' && isDayMode"
-    src="/img/audio/audio-off.png"
-    alt="Audio off"
-    class="w-12 h-12"
-  />
-  <img
-    *ngIf="mode === 'on' && !isDayMode"
-    src="/img/audio/audio-on-night.png"
-    alt="Audio on (night)"
-    class="w-12 h-12"
-  />
-  <img
-    *ngIf="mode === 'off' && !isDayMode"
-    src="/img/audio/audio-off-night.png"
-    alt="Audio off (night)"
-    class="w-12 h-12"
-  />
+  <span class="relative w-12 h-12 block">
+    <img
+      src="/img/audio/audio-on.png"
+      alt="Audio on"
+      class="w-12 h-12 absolute inset-0 transition-opacity duration-2000"
+      [style.opacity]="mode === 'on' && isDayMode ? 1 : 0"
+      [style.pointerEvents]="mode === 'on' && isDayMode ? 'auto' : 'none'"
+    />
+    <img
+      src="/img/audio/audio-off.png"
+      alt="Audio off"
+      class="w-12 h-12 absolute inset-0 transition-opacity duration-2000"
+      [style.opacity]="mode === 'off' && isDayMode ? 1 : 0"
+      [style.pointerEvents]="mode === 'off' && isDayMode ? 'auto' : 'none'"
+    />
+    <img
+      src="/img/audio/audio-on-night.png"
+      alt="Audio on (night)"
+      class="w-12 h-12 absolute inset-0 transition-opacity duration-2000"
+      [style.opacity]="mode === 'on' && !isDayMode ? 1 : 0"
+      [style.pointerEvents]="mode === 'on' && !isDayMode ? 'auto' : 'none'"
+    />
+    <img
+      src="/img/audio/audio-off-night.png"
+      alt="Audio off (night)"
+      class="w-12 h-12 absolute inset-0 transition-opacity duration-2000"
+      [style.opacity]="mode === 'off' && !isDayMode ? 1 : 0"
+      [style.pointerEvents]="mode === 'off' && !isDayMode ? 'auto' : 'none'"
+    />
+  </span>
 </button>
