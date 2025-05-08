@@ -46,6 +46,11 @@ export class TitleComponent implements OnInit {
 
   public dayNightService = inject(DayNightService);
 
+  // Sequential fade state for GIFs
+  public showDayGif = this.dayNightService.currentMode === 'day';
+  public showNightGif = this.dayNightService.currentMode === 'night';
+  private lastMode: 'day' | 'night' = this.dayNightService.currentMode;
+
   get textColor(): string {
     return this.dayNightService.currentMode === 'day'
       ? 'rgb(0,0,0)'
@@ -54,5 +59,25 @@ export class TitleComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.lastMode = this.dayNightService.currentMode;
+    this.dayNightService.mode$.subscribe((mode) => {
+      if (mode !== this.lastMode) {
+        if (mode === 'night') {
+          // Fade out day, then show night
+          this.showDayGif = false;
+          setTimeout(() => {
+            this.showNightGif = true;
+          }, 1000); // match fade duration
+        } else {
+          // Fade out night, then show day
+          this.showNightGif = false;
+          setTimeout(() => {
+            this.showDayGif = true;
+          }, 1000);
+        }
+        this.lastMode = mode;
+      }
+    });
+  }
 }

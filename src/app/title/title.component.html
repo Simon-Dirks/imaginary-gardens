@@ -4,6 +4,7 @@
   [ngClass]="showInCorner ? 'text-left p-8' : 'text-center p-12 sm:text-[7rem]'"
   [style.color]="textColor"
 >
+  <!-- Mobile top-left corner text -->
   <span
     class="transition-all duration-[3500ms]"
     [ngClass]="showInCorner ? ' md:opacity-0 opacity-100' : ''"
@@ -11,22 +12,45 @@
     >Imaginary Gardens</span
   >
 
-  <img
-    class="block md:hidden w-full max-w-xs mx-auto mt-2"
-    [src]="
-      dayNightService.currentMode === 'day'
-        ? '/img/title/title-mobile-day.gif'
-        : '/img/title/title-mobile-night.gif'
-    "
-    alt="Imaginary Gardens Mobile GIF"
-  />
-  <img
-    class="hidden md:block w-full mx-auto mt-2"
-    [src]="
-      dayNightService.currentMode === 'day'
-        ? '/img/title/title-desktop-day.gif'
-        : '/img/title/title-desktop-night.gif'
-    "
-    alt="Imaginary Gardens Desktop GIF"
-  />
+  <!-- Mobile GIFs -->
+  <div
+    class="block md:hidden relative w-screen max-w-lg mx-auto mt-2 flex items-center justify-center aspect-[330/110]"
+    *ngIf="!showInCorner"
+  >
+    <img
+      class="absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 px-4"
+      src="/img/title/title-mobile-day.gif"
+      alt="Imaginary Gardens Mobile Day GIF"
+      [style.opacity]="showDayGif ? 1 : 0"
+      style="z-index: 1"
+    />
+    <img
+      class="absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 px-4"
+      src="/img/title/title-mobile-night.gif"
+      alt="Imaginary Gardens Mobile Night GIF"
+      [style.opacity]="showNightGif ? 1 : 0"
+      style="z-index: 2"
+    />
+  </div>
+
+  <!-- Desktop GIFs -->
+  <div
+    class="hidden md:block relative w-full w-screen max-w-6xl mx-auto mt-2 flex items-center justify-center aspect-[600/180]"
+    *ngIf="!showInCorner"
+  >
+    <img
+      class="absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 px-12"
+      src="/img/title/title-desktop-day.gif"
+      alt="Imaginary Gardens Desktop Day GIF"
+      [style.opacity]="showDayGif ? 1 : 0"
+      style="z-index: 1"
+    />
+    <img
+      class="absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 px-12"
+      src="/img/title/title-desktop-night.gif"
+      alt="Imaginary Gardens Desktop Night GIF"
+      [style.opacity]="showNightGif ? 1 : 0"
+      style="z-index: 2"
+    />
+  </div>
 </h1>
