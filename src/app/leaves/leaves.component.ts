@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LeafComponent } from '../leaf/leaf.component';
 import { LeafService } from '../../services/leaf.service';
@@ -11,10 +11,14 @@ import { LeafModel } from '../../models/leaf.model';
   templateUrl: './leaves.component.html',
   styleUrls: ['./leaves.component.scss'],
 })
-export class LeavesComponent implements OnInit {
+export class LeavesComponent implements OnInit, OnDestroy {
   @Input() visible: boolean = false;
   @Input() movementAmplitude: number = 3; // Controls how much the leaves move (in pixels)
   leaves: LeafModel[] = [];
+
+  private resizeListener = (event: UIEvent) => {
+    this.leaves = this.leafService.getLeaves();
+  };
 
   constructor(private leafService: LeafService) {}
 
@@ -24,5 +28,10 @@ export class LeavesComponent implements OnInit {
 
   ngOnInit(): void {
     this.leaves = this.leafService.getLeaves();
+    window.addEventListener('resize', this.resizeListener);
+  }
+
+  ngOnDestroy(): void {
+    window.removeEventListener('resize', this.resizeListener);
   }
 }

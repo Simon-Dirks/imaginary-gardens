@@ -5,138 +5,162 @@ import { LeafModel } from '../models/leaf.model';
   providedIn: 'root',
 })
 export class LeafService {
-  private leaves: LeafModel[] = [
+  private referenceWidth = 1800;
+  private referenceHeight = 1020;
+  private referenceCenter = { x: 900, y: 510 };
+
+  private leavesOffsets = [
     {
       imageUrl: '/img/leaves/1_dalilah.png',
       link: 'https://thecouch.hethem.nl/rooted-in-thin-air/',
-      position: { x: 357, y: 663 },
+      dx: -343,
+      dy: 263,
     },
     {
       imageUrl: '/img/leaves/2_flora.png',
       link: 'https://thecouch.hethem.nl/dragon-fruit/',
-      position: { x: 1000, y: 686 },
+      dx: 300,
+      dy: 286,
     },
     {
       imageUrl: '/img/leaves/3_Ismael.png',
       link: 'https://thecouch.hethem.nl/the-mirror/',
-      position: { x: 1008, y: 162 },
+      dx: 308,
+      dy: -238,
     },
     {
       imageUrl: '/img/leaves/4_JanelleLinda.png',
       link: 'https://thecouch.hethem.nl/dead-ends/',
-      position: { x: 631, y: 684 },
+      dx: -69,
+      dy: 284,
     },
     {
       imageUrl: '/img/leaves/1_MariaHelena.png',
       link: 'https://thecouch.hethem.nl/five-stars/',
-      position: { x: 174, y: 567 },
+      dx: -526,
+      dy: 167,
     },
     {
       imageUrl: '/img/leaves/19_Marie.png',
       link: 'https://thecouch.hethem.nl/from-minerals-to-pixel/',
-      position: { x: 1183, y: 666 },
+      dx: 483,
+      dy: 266,
     },
     {
       imageUrl: '/img/leaves/7_Mia.png',
       link: 'https://thecouch.hethem.nl/passiflora-my-new-roommate/',
-      position: { x: 1003, y: 352 },
+      dx: 303,
+      dy: -48,
     },
     {
       imageUrl: '/img/leaves/6_Ning.png',
       link: 'https://thecouch.hethem.nl/what-remains-shall-appear/',
-      position: { x: 826, y: 531 },
+      dx: 126,
+      dy: 131,
     },
     {
       imageUrl: '/img/leaves/8_Rafaela.png',
       link: 'https://thecouch.hethem.nl/canibalesmideseo/',
-      position: { x: 1188, y: 510 },
+      dx: 488,
+      dy: 110,
     },
     {
       imageUrl: '/img/leaves/10_Sarah_Alena.png',
       link: 'https://thecouch.hethem.nl/a-tapestry-of-traces/',
-      position: { x: 409, y: 563 },
+      dx: -291,
+      dy: 163,
     },
     {
       imageUrl: '/img/leaves/11_Silver.png',
       link: 'https://thecouch.hethem.nl/kalinixta-mesoskeve/',
-      position: { x: 655, y: 522 },
+      dx: -45,
+      dy: 122,
     },
     {
       imageUrl: '/img/leaves/12_Yosuke.png',
       link: 'https://thecouch.hethem.nl/the-algorithmic-garden/',
-      position: { x: 668, y: 402 },
+      dx: -32,
+      dy: 2,
     },
     {
       imageUrl: '/img/leaves/13_yuji.png',
       link: 'https://thecouch.hethem.nl/beautiful-rain/',
-      position: { x: 338, y: 277 },
+      dx: -362,
+      dy: -123,
     },
     {
       imageUrl: '/img/leaves/15_DaHyeonKang.png',
       link: 'https://thecouch.hethem.nl/silent-plants/',
-      position: { x: 84, y: 395 },
+      dx: -616,
+      dy: -5,
     },
     {
       imageUrl: '/img/leaves/16_JaeYoung.png',
       link: 'https://thecouch.hethem.nl/cultivating-the-garden-of-hospitality/',
-      position: { x: 751, y: 207 },
+      dx: 51,
+      dy: -193,
     },
     {
       imageUrl: '/img/leaves/17_Sade.png',
       link: 'https://thecouch.hethem.nl/the-bush/',
-      position: { x: 456, y: 381 },
+      dx: -244,
+      dy: -19,
     },
     {
       imageUrl: '/img/leaves/18_Mado.png',
       link: 'https://thecouch.hethem.nl/the-green-in-the-city-center/',
-      position: { x: 483, y: 87 },
+      dx: -217,
+      dy: -313,
     },
     {
       imageUrl: '/img/leaves/19_Soyeon.png',
       link: 'https://thecouch.hethem.nl/tangerine-kims-memory/',
-      position: { x: 498, y: 253 },
+      dx: -202,
+      dy: -147,
     },
   ];
 
   constructor() {}
 
   getLeaves(): LeafModel[] {
-    return this.leaves;
+    const center = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    return this.leavesOffsets.map((leaf) => ({
+      imageUrl: leaf.imageUrl,
+      link: leaf.link,
+      position: {
+        x: center.x + leaf.dx,
+        y: center.y + leaf.dy,
+      },
+    }));
   }
 
-  addLeaf(leaf: LeafModel): void {
-    if (!leaf.position) {
-      leaf.position = this.generateRandomPosition();
-    }
-    this.leaves.push(leaf);
+  addLeaf(leaf: {
+    imageUrl: string;
+    link: string;
+    position: { x: number; y: number };
+  }): void {
+    const center = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    const dx = leaf.position.x - center.x;
+    const dy = leaf.position.y - center.y;
+    this.leavesOffsets.push({
+      imageUrl: leaf.imageUrl,
+      link: leaf.link,
+      dx,
+      dy,
+    });
   }
 
   removeLeaf(index: number): void {
-    if (index >= 0 && index < this.leaves.length) {
-      this.leaves.splice(index, 1);
+    if (index >= 0 && index < this.leavesOffsets.length) {
+      this.leavesOffsets.splice(index, 1);
     }
   }
 
   updateLeafPosition(index: number, position: { x: number; y: number }): void {
-    if (index >= 0 && index < this.leaves.length) {
-      this.leaves[index].position = position;
+    if (index >= 0 && index < this.leavesOffsets.length) {
+      const center = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+      this.leavesOffsets[index].dx = position.x - center.x;
+      this.leavesOffsets[index].dy = position.y - center.y;
     }
-  }
-
-  private generateRandomPosition(): { x: number; y: number } {
-    const viewportWidth =
-      window.innerWidth || document.documentElement.clientWidth;
-    const viewportHeight =
-      window.innerHeight || document.documentElement.clientHeight;
-
-    const minX = viewportWidth * 0.1;
-    const maxX = viewportWidth * 0.9;
-    const minY = viewportHeight * 0.1;
-    const maxY = viewportHeight * 0.9;
-
-    return {
-      x: Math.floor(minX + Math.random() * (maxX - minX)),
-      y: Math.floor(minY + Math.random() * (maxY - minY)),
-    };
   }
 }
