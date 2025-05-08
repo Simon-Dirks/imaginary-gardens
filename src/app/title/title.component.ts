@@ -44,7 +44,7 @@ export class TitleComponent implements OnInit {
   @Input() titleState: string = 'visible';
   @Input() showInCorner: boolean = false;
 
-  private dayNightService = inject(DayNightService);
+  public dayNightService = inject(DayNightService);
 
   get textColor(): string {
     return this.dayNightService.currentMode === 'day'

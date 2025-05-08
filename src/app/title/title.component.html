@@ -7,6 +7,26 @@
   <span
     class="transition-all duration-[3500ms]"
     [ngClass]="showInCorner ? ' md:opacity-0 opacity-100' : ''"
+    *ngIf="showInCorner"
     >Imaginary Gardens</span
   >
+
+  <img
+    class="block md:hidden w-full max-w-xs mx-auto mt-2"
+    [src]="
+      dayNightService.currentMode === 'day'
+        ? '/img/title/title-mobile-day.gif'
+        : '/img/title/title-mobile-night.gif'
+    "
+    alt="Imaginary Gardens Mobile GIF"
+  />
+  <img
+    class="hidden md:block w-full mx-auto mt-2"
+    [src]="
+      dayNightService.currentMode === 'day'
+        ? '/img/title/title-desktop-day.gif'
+        : '/img/title/title-desktop-night.gif'
+    "
+    alt="Imaginary Gardens Desktop GIF"
+  />
 </h1>
