@@ -19,7 +19,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
         ':enter',
         [
           style({ opacity: 0 }),
-          animate('8s {{delay}}s ease-out', style({ opacity: 1 })),
+          animate('6s {{delay}}s ease-out', style({ opacity: 1 })),
         ],
         { params: { delay: 0 } }
       ),

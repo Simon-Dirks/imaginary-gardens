@@ -23,7 +23,7 @@ export class LeavesComponent implements OnInit, OnDestroy {
   constructor(private leafService: LeafService) {}
 
   getIntroAnimationDelay(index: number): number {
-    return index * 0.2;
+    return index * 0.05;
   }
 
   ngOnInit(): void {
