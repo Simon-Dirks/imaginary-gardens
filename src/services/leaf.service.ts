@@ -7,7 +7,7 @@ import { LeafModel } from '../models/leaf.model';
 export class LeafService {
   private leaves: LeafModel[] = [
     {
-      imageUrl: '/img/leaves/1_DalilaFermezza.png',
+      imageUrl: '/img/leaves/1_dalilah.png',
       link: 'https://thecouch.hethem.nl/rooted-in-thin-air/',
       position: this.generateRandomPosition(),
     },
@@ -17,37 +17,37 @@ export class LeafService {
       position: this.generateRandomPosition(),
     },
     {
-      imageUrl: '/img/leaves/3_ismael.png',
+      imageUrl: '/img/leaves/3_Ismael.png',
       link: 'https://thecouch.hethem.nl/the-mirror/',
       position: this.generateRandomPosition(),
     },
     {
-      imageUrl: '/img/leaves/4_Janelle_Linda.png',
+      imageUrl: '/img/leaves/4_JanelleLinda.png',
       link: 'https://thecouch.hethem.nl/dead-ends/',
       position: this.generateRandomPosition(),
     },
     {
-      imageUrl: '/img/leaves/5_Maria_Helena.png',
+      imageUrl: '/img/leaves/1_MariaHelena.png',
       link: 'https://thecouch.hethem.nl/five-stars/',
       position: this.generateRandomPosition(),
     },
     {
-      imageUrl: '/img/leaves/6_Marie Garreyn.png',
+      imageUrl: '/img/leaves/19_Marie.png',
       link: 'https://thecouch.hethem.nl/from-minerals-to-pixel/',
       position: this.generateRandomPosition(),
     },
     {
-      imageUrl: '/img/leaves/7_Mia Domenech Puras.png',
+      imageUrl: '/img/leaves/7_Mia.png',
       link: 'https://thecouch.hethem.nl/passiflora-my-new-roommate/',
       position: this.generateRandomPosition(),
     },
     {
-      imageUrl: '/img/leaves/8_Ning-Ju Hsu.png',
+      imageUrl: '/img/leaves/6_Ning.png',
       link: 'https://thecouch.hethem.nl/what-remains-shall-appear/',
       position: this.generateRandomPosition(),
     },
     {
-      imageUrl: '/img/leaves/9_Rafaela Aguilar Bostock.png',
+      imageUrl: '/img/leaves/8_Rafaela.png',
       link: 'https://thecouch.hethem.nl/canibalesmideseo/',
       position: this.generateRandomPosition(),
     },
@@ -67,12 +67,12 @@ export class LeafService {
       position: this.generateRandomPosition(),
     },
     {
-      imageUrl: '/img/leaves/13_Yuji.png',
+      imageUrl: '/img/leaves/13_yuji.png',
       link: 'https://thecouch.hethem.nl/beautiful-rain/',
       position: this.generateRandomPosition(),
     },
     {
-      imageUrl: '/img/leaves/15_Da Hyeon Kang.png',
+      imageUrl: '/img/leaves/15_DaHyeonKang.png',
       link: 'https://thecouch.hethem.nl/silent-plants/',
       position: this.generateRandomPosition(),
     },
@@ -82,17 +82,17 @@ export class LeafService {
       position: this.generateRandomPosition(),
     },
     {
-      imageUrl: '/img/leaves/17_SadeEkwedike.png',
+      imageUrl: '/img/leaves/17_Sade.png',
       link: 'https://thecouch.hethem.nl/the-bush/',
       position: this.generateRandomPosition(),
     },
     {
-      imageUrl: '/img/leaves/18_MadoNullans.png',
+      imageUrl: '/img/leaves/18_Mado.png',
       link: 'https://thecouch.hethem.nl/the-green-in-the-city-center/',
       position: this.generateRandomPosition(),
     },
     {
-      imageUrl: '/img/leaves/19_SoyeonKim.png',
+      imageUrl: '/img/leaves/19_Soyeon.png',
       link: 'https://thecouch.hethem.nl/tangerine-kims-memory/',
       position: this.generateRandomPosition(),
     },
