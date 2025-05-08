@@ -130,7 +130,7 @@ export class LeafService {
     const viewportHeight =
       window.innerHeight || document.documentElement.clientHeight;
 
-    if (viewportWidth < 512) {
+    if (viewportWidth < 768) {
       const topPadding = 50;
       const leafSpacing = 200;
       return this.leavesOffsets.map((leaf, i) => ({
