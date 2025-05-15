@@ -22,19 +22,19 @@ import { IndexService } from '../../services/index.service';
         'visible',
         style({
           opacity: 1,
-        })
+        }),
       ),
       state(
         'hiding',
         style({
           opacity: 0,
-        })
+        }),
       ),
       state(
         'hidden',
         style({
           opacity: 0,
-        })
+        }),
       ),
       transition('visible => hiding', [animate('2000ms ease-out')]),
       transition('hidden => visible', [animate('4000ms 1.5s ease-out')]),
@@ -48,7 +48,6 @@ export class TitleComponent implements OnInit {
   public dayNightService = inject(DayNightService);
   public indexService = inject(IndexService);
 
-  // Sequential fade state for GIFs
   public showDayGif = this.dayNightService.currentMode === 'day';
   public showNightGif = this.dayNightService.currentMode === 'night';
   private lastMode: 'day' | 'night' = this.dayNightService.currentMode;
@@ -66,24 +65,23 @@ export class TitleComponent implements OnInit {
     this.lastMode = this.dayNightService.currentMode;
     this.dayNightService.mode$.subscribe((mode) => {
       if (mode !== this.lastMode) {
-        // Cancel any pending timeout to prevent both GIFs from showing
         if (this.fadeTimeout !== null) {
           clearTimeout(this.fadeTimeout);
           this.fadeTimeout = null;
         }
-        
+
         if (mode === 'night') {
           // Fade out day, then show night
           this.showDayGif = false;
-          this.showNightGif = false; // Ensure night is also hidden during transition
+          this.showNightGif = false;
           this.fadeTimeout = window.setTimeout(() => {
             this.showNightGif = true;
             this.fadeTimeout = null;
-          }, 1000); // match fade duration
+          }, 1000);
         } else {
           // Fade out night, then show day
           this.showNightGif = false;
-          this.showDayGif = false; // Ensure day is also hidden during transition
+          this.showDayGif = false;
           this.fadeTimeout = window.setTimeout(() => {
             this.showDayGif = true;
             this.fadeTimeout = null;

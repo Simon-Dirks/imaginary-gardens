@@ -13,7 +13,6 @@ import { LeafModel } from '../../models/leaf.model';
 })
 export class LeavesComponent implements OnInit, OnDestroy {
   @Input() visible: boolean = false;
-  @Input() movementAmplitude: number = 3; // Controls how much the leaves move (in pixels)
   leaves: LeafModel[] = [];
 
   private resizeListener = (event: UIEvent) => {

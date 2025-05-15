@@ -1,17 +1,25 @@
 @import "tailwindcss";
 
 body {
-  cursor: url("/img/ant.png") 28 10, auto !important;
+  cursor:
+    url("/img/ant.png") 28 10,
+    auto !important;
 }
 
 .ant-grabbing {
-  cursor: url("/img/ant-grabbing.png") 29 10, grabbing !important;
+  cursor:
+    url("/img/ant-grabbing.png") 29 10,
+    grabbing !important;
 }
 
 .ant-hover {
-  cursor: url("/img/ant-hover.png") 28 10, pointer !important;
+  cursor:
+    url("/img/ant-hover.png") 28 10,
+    pointer !important;
 }
 
 body.ant-grabbing * {
-  cursor: url("/img/ant-grabbing.png") 29 10, grabbing !important;
+  cursor:
+    url("/img/ant-grabbing.png") 29 10,
+    grabbing !important;
 }

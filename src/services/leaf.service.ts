@@ -155,9 +155,9 @@ export class LeafService {
     },
   ];
 
-  constructor() {}
+  public verticalSpreadFactor = 3; // Determines how far the leaves spread out vertically while you make the screen width smaller, to prevent leaf overlap on smaller screens
 
-  public verticalSpreadFactor = 3;
+  constructor() {}
 
   getLeaves(): LeafModel[] {
     const viewportWidth =
@@ -166,6 +166,7 @@ export class LeafService {
       window.innerHeight || document.documentElement.clientHeight;
 
     if (viewportWidth < 768) {
+      // Mobile: leaves are stacked vertically, one leaf per "row"
       const topPadding = 50;
       const leafSpacing = 200;
       return this.leavesData.map((leaf, i) => ({
@@ -181,7 +182,7 @@ export class LeafService {
         dy: 0,
       }));
     } else {
-      // Original layout for larger screens
+      // Original layout for larger screens, leaves spread out vertically as screen width gets smaller
       const center = { x: viewportWidth / 2, y: viewportHeight / 2 };
       const scaleX = viewportWidth / this.referenceWidth;
       const scaleY = viewportHeight / this.referenceHeight;

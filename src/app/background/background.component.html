@@ -1,16 +1,19 @@
+<!-- Day mode background -->
 <div
   class="absolute inset-0 bg-cover bg-center transition-opacity duration-4000"
-  style="background-image: url('img/background_day.png')"
+  style="background-image: url(&quot;img/background_day.png&quot;)"
   [ngClass]="{
     'opacity-100': isDayMode && imagesLoaded,
-    'opacity-0': !isDayMode || !imagesLoaded
+    'opacity-0': !isDayMode || !imagesLoaded,
   }"
 ></div>
+
+<!-- Night mode background -->
 <div
   class="absolute inset-0 bg-cover bg-center transition-opacity duration-4000"
-  style="background-image: url('img/background_night.png')"
+  style="background-image: url(&quot;img/background_night.png&quot;)"
   [ngClass]="{
     'opacity-100': !isDayMode && imagesLoaded,
-    'opacity-0': isDayMode || !imagesLoaded
+    'opacity-0': isDayMode || !imagesLoaded,
   }"
 ></div>

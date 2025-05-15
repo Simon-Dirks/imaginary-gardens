@@ -21,7 +21,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
           style({ opacity: 0 }),
           animate('6s {{delay}}s ease-out', style({ opacity: 1 })),
         ],
-        { params: { delay: 0 } }
+        { params: { delay: 0 } },
       ),
     ]),
   ],
@@ -43,7 +43,7 @@ export class LeafComponent implements OnInit, OnDestroy {
     const cursorStyle = "url('/img/ant-hover.png') 28 10, pointer !important";
 
     return this.sanitizer.bypassSecurityTrustStyle(
-      `cursor: ${cursorStyle}; top: ${this.verticalOffset}px; left: ${this.horizontalOffset}px;`
+      `cursor: ${cursorStyle}; top: ${this.verticalOffset}px; left: ${this.horizontalOffset}px;`,
     );
   }
 

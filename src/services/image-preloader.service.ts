@@ -9,11 +9,9 @@ export class ImagePreloaderService {
   private imagesPreloaded = false;
   private preloadedImages: HTMLImageElement[] = [];
 
-  // Track background images loading status
   private _backgroundImagesLoaded = new BehaviorSubject<boolean>(false);
   public backgroundImagesLoaded$ = this._backgroundImagesLoaded.asObservable();
 
-  // Background image paths
   private backgroundImages = [
     'img/background_day.png',
     'img/background_night.png',
@@ -27,9 +25,9 @@ export class ImagePreloaderService {
     }
 
     const leaves = this.leafService.getLeaves();
-    const imageUrls = leaves.map((leaf) => leaf.imageUrl);
+    const leafImageUrls = leaves.map((leaf) => leaf.imageUrl);
 
-    const otherImages = [
+    const otherImageUrls = [
       'img/ant.png',
       'img/day-night/day.png',
       'img/day-night/night.png',
@@ -38,14 +36,13 @@ export class ImagePreloaderService {
       'img/audio/audio-on-night.png',
       'img/audio/audio-off-night.png',
     ];
-    const allImages = [...imageUrls, ...otherImages];
+    const allImageUrls = [...leafImageUrls, ...otherImageUrls];
 
-    console.log('Preloading images:', allImages);
+    console.log('Preloading images:', allImageUrls);
 
-    // Preload background images separately
     this.preloadBackgroundImages();
 
-    const imagePromises = allImages.map((url) => this.preloadImage(url));
+    const imagePromises = allImageUrls.map((url) => this.preloadImage(url));
 
     return Promise.all(imagePromises)
       .then(() => {
@@ -57,26 +54,23 @@ export class ImagePreloaderService {
       });
   }
 
-  /**
-   * Preload background images and update the backgroundImagesLoaded$ observable
-   */
   preloadBackgroundImages(): Promise<void> {
     console.log('Preloading background images:', this.backgroundImages);
 
     const imagePromises = this.backgroundImages.map((url) =>
-      this.preloadImage(url)
+      this.preloadImage(url),
     );
 
     return new Promise<void>((resolve) => {
       Promise.all(imagePromises)
         .then(() => {
           console.log('Background images preloaded successfully');
-          this._backgroundImagesLoaded.next(true);
-          resolve();
         })
         .catch((error) => {
           console.error('Error preloading background images:', error);
-          // Still set to true to not block the UI
+        })
+        .finally(() => {
+          console.log('Background images preload completed');
           this._backgroundImagesLoaded.next(true);
           resolve();
         });
@@ -88,13 +82,13 @@ export class ImagePreloaderService {
       const img = new Image();
 
       img.onload = () => {
-        this.preloadedImages.push(img); // Keep a reference to prevent garbage collection
+        this.preloadedImages.push(img);
         resolve();
       };
 
       img.onerror = () => {
         console.warn(`Failed to preload image: ${url}`);
-        resolve(); // Resolve anyway to not block other images
+        resolve();
       };
 
       img.src = url;

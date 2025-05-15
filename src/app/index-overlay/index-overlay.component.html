@@ -11,7 +11,7 @@
       'bg-[#d7f7e6]/65 md:bg-[#d7f7e6]/55':
         dayNightService.currentMode === 'day',
       'bg-black/65 md:bg-black/55 text-[#e6e6e6]':
-        dayNightService.currentMode === 'night'
+        dayNightService.currentMode === 'night',
     }"
   >
     <div class="text-center py-6 md:py-12 flex-shrink-0">
@@ -25,7 +25,11 @@
           [href]="entry.link"
           target="_blank"
           class="flex justify-between items-center gap-6"
-          style="cursor: url('/img/ant-hover.png') 28 10, pointer !important"
+          style="
+            cursor:
+              url(&quot;/img/ant-hover.png&quot;) 28 10,
+              pointer !important;
+          "
         >
           <div class="flex-1 text-right md:pr-6">
             <h2 class="text-base md:text-3xl uppercase">{{ entry.title }}</h2>

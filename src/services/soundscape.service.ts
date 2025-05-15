@@ -15,8 +15,7 @@ export class SoundscapeService implements OnDestroy {
   private _dayAudioReady = new BehaviorSubject<boolean>(false);
   private _nightAudioReady = new BehaviorSubject<boolean>(false);
   private _audioReady = new BehaviorSubject<boolean>(false);
-  
-  // Store the seek positions to resume playback
+
   private daySeekPosition: number = 0;
   private nightSeekPosition: number = 0;
 
@@ -28,7 +27,6 @@ export class SoundscapeService implements OnDestroy {
   private dayNightService = inject(DayNightService);
 
   constructor() {
-    // Initialize both soundscapes with loading events
     this.daySoundscape = new Howl({
       src: ['/audio/day-soundscape.mp3'],
       loop: true,
@@ -59,7 +57,6 @@ export class SoundscapeService implements OnDestroy {
         console.error('Error loading night soundscape:', error),
     });
 
-    // Start preloading immediately
     console.log('Preloading audio files...');
 
     this.updateSoundscape(this.dayNightService.currentMode);
@@ -89,7 +86,6 @@ export class SoundscapeService implements OnDestroy {
     this._audioReady.complete();
   }
 
-  // Check if both audio files are loaded
   private checkAudioReady(): void {
     if (
       this.daySoundscape.state() === 'loaded' &&
@@ -100,7 +96,6 @@ export class SoundscapeService implements OnDestroy {
     }
   }
 
-  // Public getters for audio ready states
   public get dayAudioReady(): boolean {
     return this._dayAudioReady.value;
   }
@@ -113,7 +108,6 @@ export class SoundscapeService implements OnDestroy {
     return this._audioReady.value;
   }
 
-  // Check if the current mode's audio is ready
   public get currentModeAudioReady(): boolean {
     const mode = this.dayNightService.currentMode;
     return mode === 'day' ? this.dayAudioReady : this.nightAudioReady;
@@ -121,26 +115,25 @@ export class SoundscapeService implements OnDestroy {
 
   private updateSoundscape(mode: DayNightMode): void {
     const previousMode = mode === 'day' ? 'night' : 'day';
-    const previousSoundscape = mode === 'day' ? this.nightSoundscape : this.daySoundscape;
-    
-    // Save the current position before switching
+    const previousSoundscape =
+      mode === 'day' ? this.nightSoundscape : this.daySoundscape;
+
     if (this.currentSoundscape && this.currentSoundscape.playing()) {
       const currentSeek = this.currentSoundscape.seek() as number;
       console.log(`Saving ${previousMode} position: ${currentSeek}s`);
-      
+
       if (previousMode === 'day') {
         this.daySeekPosition = currentSeek;
       } else {
         this.nightSeekPosition = currentSeek;
       }
-      
-      // Stop the current soundscape
+
       console.log(`Stopping current ${previousMode} soundscape`);
       this.currentSoundscape.stop();
     }
 
-    // Switch to the new soundscape
-    this.currentSoundscape = mode === 'day' ? this.daySoundscape : this.nightSoundscape;
+    this.currentSoundscape =
+      mode === 'day' ? this.daySoundscape : this.nightSoundscape;
     console.log(`Switched to ${mode} soundscape`);
 
     if (this.audioService.currentMode === 'on') {
@@ -153,13 +146,12 @@ export class SoundscapeService implements OnDestroy {
   private playSoundscape(): void {
     if (this.currentSoundscape && !this.currentSoundscape.playing()) {
       const mode = this.dayNightService.currentMode;
-      const seekPosition = mode === 'day' ? this.daySeekPosition : this.nightSeekPosition;
-      
-      // Start playing
+      const seekPosition =
+        mode === 'day' ? this.daySeekPosition : this.nightSeekPosition;
+
       console.log(`Playing ${mode} soundscape`);
       this.currentSoundscape.play();
-      
-      // If we have a saved position, seek to it
+
       if (seekPosition > 0) {
         console.log(`Resuming ${mode} soundscape from ${seekPosition}s`);
         this.currentSoundscape.seek(seekPosition);

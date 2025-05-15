@@ -20,7 +20,8 @@
   <app-leaves
     [visible]="titleState === 'hidden'"
     [ngClass]="{
-      'pointer-events-none': titleState === 'visible' || titleState === 'hiding',
+      'pointer-events-none':
+        titleState === 'visible' || titleState === 'hiding',
     }"
   ></app-leaves>
 

@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { DayNightService } from '../../services/day-night.service';
 import { LeafService } from '../../services/leaf.service';
 import { IndexService } from '../../services/index.service';
