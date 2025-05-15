@@ -16,6 +16,7 @@ import { LeafModel } from '../../models/leaf.model';
 export class IndexOverlayComponent implements OnInit, OnDestroy {
   public leafService = inject(LeafService);
   public dayNightService = inject(DayNightService);
+  public indexService = inject(IndexService);
 
   entries: LeafModel[] = [];
 

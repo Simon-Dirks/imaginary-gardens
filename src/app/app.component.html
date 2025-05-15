@@ -24,14 +24,7 @@
     }"
   ></app-leaves>
 
-  <div
-    class="fixed inset-0 z-50 flex items-center justify-center pointer-events-none"
-    *ngIf="indexService.isShowing"
-  >
-    <div class="pointer-events-auto">
-      <app-index-overlay></app-index-overlay>
-    </div>
-  </div>
+  <app-index-overlay></app-index-overlay>
 
   <div class="bottom-12 right-6 absolute z-50" [@fadeInControls]>
     <app-index-button />
