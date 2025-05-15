@@ -8,6 +8,7 @@ import {
   animate,
   transition,
 } from '@angular/animations';
+import { IndexService } from '../../services/index.service';
 
 @Component({
   selector: 'app-title',
@@ -45,6 +46,7 @@ export class TitleComponent implements OnInit {
   @Input() showInCorner: boolean = false;
 
   public dayNightService = inject(DayNightService);
+  public indexService = inject(IndexService);
 
   // Sequential fade state for GIFs
   public showDayGif = this.dayNightService.currentMode === 'day';

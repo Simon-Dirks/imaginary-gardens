@@ -4,11 +4,15 @@
   [ngClass]="showInCorner ? 'text-left p-8' : 'text-center p-12 sm:text-[7rem]'"
   [style.color]="textColor"
 >
-  <!-- Mobile top-left corner text -->
+  <!-- Top-left corner text -->
   <span
     class="transition-all duration-[3500ms]"
-    [ngClass]="showInCorner ? ' md:opacity-0 opacity-100' : ''"
-    *ngIf="showInCorner"
+    [ngClass]="
+      showInCorner && !indexService.isShowing
+        ? ' md:opacity-0 opacity-100'
+        : 'opacity-100'
+    "
+    *ngIf="showInCorner || (indexService.isShowing && titleState === 'hidden')"
     >Imaginary Gardens</span
   >
 
