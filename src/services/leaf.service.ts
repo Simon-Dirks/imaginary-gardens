@@ -9,7 +9,7 @@ export class LeafService {
   private referenceHeight = 1020;
   private referenceCenter = { x: 900, y: 510 };
 
-  private leavesData = [
+  public leavesData = [
     {
       imageUrl: '/img/leaves/1_dalilah.png',
       link: 'https://thecouch.hethem.nl/rooted-in-thin-air/',
