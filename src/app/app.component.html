@@ -30,6 +30,6 @@
   <div class="bottom-12 right-6 absolute z-50" [@fadeInControls]>
     <app-index-button />
     <app-day-night-button />
-    <app-audio-button />
+    <app-audio-button *ngIf="soundscapeService.currentModeAudioReady" />
   </div>
 </div>

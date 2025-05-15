@@ -49,14 +49,11 @@ import { IndexService } from '../services/index.service';
 export class AppComponent implements OnInit, OnDestroy {
   title = 'imaginary-gardens';
   titleState: 'visible' | 'hiding' | 'hidden' = 'hidden';
-  audioReady = false;
-  currentModeAudioReady = false;
   imagesLoaded = false;
   private destroy$ = new Subject<void>();
-  private dayNightService = inject(DayNightService);
   private imagePreloaderService = inject(ImagePreloaderService);
-  private soundscapeService = inject(SoundscapeService);
   public indexService = inject(IndexService);
+  public soundscapeService = inject(SoundscapeService);
 
   constructor() {}
 
@@ -78,36 +75,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.imagePreloaderService.preloadLeafImages().then(() => {
       console.log('All images preloaded, app ready for animation');
     });
-
-    this.soundscapeService.audioReady$
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((ready) => {
-        console.log('All audio ready state changed:', ready);
-        this.audioReady = ready;
-      });
-
-    this.soundscapeService.dayAudioReady$
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((ready) => {
-        console.log('Day audio ready state changed:', ready);
-        this.updateCurrentModeAudioReady();
-      });
-
-    this.soundscapeService.nightAudioReady$
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((ready) => {
-        console.log('Night audio ready state changed:', ready);
-        this.updateCurrentModeAudioReady();
-      });
-
-    this.dayNightService.mode$.pipe(takeUntil(this.destroy$)).subscribe(() => {
-      this.updateCurrentModeAudioReady();
-    });
-  }
-
-  private updateCurrentModeAudioReady(): void {
-    this.currentModeAudioReady = this.soundscapeService.currentModeAudioReady;
-    console.log('Current mode audio ready:', this.currentModeAudioReady);
   }
 
   ngOnDestroy(): void {
