@@ -93,7 +93,7 @@ export class LeafService {
     {
       imageUrl: '/img/leaves/11_Silver.png',
       link: 'https://thecouch.hethem.nl/kalinixta-mesoskeve/',
-      title: 'ΚΑΛΗΝΥΧΤΑ μεσόσκευε (kalinixta mesoskeve)',
+      title: 'kalinixta mesoskeve',
       authorName: 'Silver Giannakidi',
       dx: -45,
       dy: 122,
