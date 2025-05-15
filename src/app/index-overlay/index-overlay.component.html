@@ -15,16 +15,16 @@
     <div class="flex-1 overflow-y-auto px-8 pb-8">
       <div class="space-y-14">
         <div
-          *ngFor="let leaf of leafService.leavesData"
+          *ngFor="let entry of entries"
           class="flex justify-between items-center gap-6"
         >
           <div class="flex-1 text-right pr-6">
-            <a [href]="leaf.link" target="_blank" class="hover:underline">
-              <h2 class="text-3xl uppercase">{{ leaf.title }}</h2>
+            <a [href]="entry.link" target="_blank" class="hover:underline">
+              <h2 class="text-3xl uppercase">{{ entry.title }}</h2>
             </a>
           </div>
           <div class="flex-1 text-left">
-            <p class="text-2xl">{{ leaf.authorName }}</p>
+            <p class="text-2xl">{{ entry.authorName }}</p>
           </div>
         </div>
       </div>

@@ -4,4 +4,6 @@ export interface LeafModel {
   title: string;
   authorName: string;
   position?: { x: number; y: number };
+  dx: number;
+  dy: number;
 }

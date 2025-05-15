@@ -7,9 +7,8 @@ import { LeafModel } from '../models/leaf.model';
 export class LeafService {
   private referenceWidth = 1800;
   private referenceHeight = 1020;
-  private referenceCenter = { x: 900, y: 510 };
 
-  public leavesData = [
+  public leavesData: LeafModel[] = [
     {
       imageUrl: '/img/leaves/15_DaHyeonKang.png',
       link: 'https://thecouch.hethem.nl/silent-plants/',
@@ -178,6 +177,8 @@ export class LeafService {
           x: viewportWidth / 2 - 150,
           y: topPadding + leafSpacing * i,
         },
+        dx: 0,
+        dy: 0,
       }));
     } else {
       // Original layout for larger screens
@@ -202,6 +203,8 @@ export class LeafService {
             x: center.x + leaf.dx * scaleX - 90,
             y: center.y + (leaf.dy + extraSpread) * scaleY - 100,
           },
+          dx: leaf.dx,
+          dy: leaf.dy,
         };
       });
     }
