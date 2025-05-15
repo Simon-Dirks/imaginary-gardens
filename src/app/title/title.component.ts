@@ -52,6 +52,7 @@ export class TitleComponent implements OnInit {
   public showDayGif = this.dayNightService.currentMode === 'day';
   public showNightGif = this.dayNightService.currentMode === 'night';
   private lastMode: 'day' | 'night' = this.dayNightService.currentMode;
+  private fadeTimeout: number | null = null;
 
   get textColor(): string {
     return this.dayNightService.currentMode === 'day'
@@ -65,17 +66,27 @@ export class TitleComponent implements OnInit {
     this.lastMode = this.dayNightService.currentMode;
     this.dayNightService.mode$.subscribe((mode) => {
       if (mode !== this.lastMode) {
+        // Cancel any pending timeout to prevent both GIFs from showing
+        if (this.fadeTimeout !== null) {
+          clearTimeout(this.fadeTimeout);
+          this.fadeTimeout = null;
+        }
+        
         if (mode === 'night') {
           // Fade out day, then show night
           this.showDayGif = false;
-          setTimeout(() => {
+          this.showNightGif = false; // Ensure night is also hidden during transition
+          this.fadeTimeout = window.setTimeout(() => {
             this.showNightGif = true;
+            this.fadeTimeout = null;
           }, 1000); // match fade duration
         } else {
           // Fade out night, then show day
           this.showNightGif = false;
-          setTimeout(() => {
+          this.showDayGif = false; // Ensure day is also hidden during transition
+          this.fadeTimeout = window.setTimeout(() => {
             this.showDayGif = true;
+            this.fadeTimeout = null;
           }, 1000);
         }
         this.lastMode = mode;
