@@ -1,3 +1,12 @@
+<!-- White overlay while loading -->
+<div
+  class="absolute inset-0 bg-white transition-opacity duration-4000 z-[4] pointer-events-none"
+  [ngClass]="{
+    'opacity-100': !imagesLoaded,
+    'opacity-0': imagesLoaded,
+  }"
+></div>
+
 <!-- Day mode background -->
 <div
   class="absolute inset-0 bg-cover bg-center transition-opacity duration-4000"
