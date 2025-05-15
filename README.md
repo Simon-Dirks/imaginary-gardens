@@ -1,5 +1,10 @@
 # Imaginary Gardens
 
+<a href="https://thecouch.hethem.nl/imaginary-gardens/" target="_blank">![image](https://github.com/user-attachments/assets/3980b291-d05a-4741-ba63-0b7d042959dc)</a>
+
+<a href="https://thecouch.hethem.nl/imaginary-gardens/" target="_blank">![Screenshot 2025-05-15 at 12-06-41 Imaginary Gardens](https://github.com/user-attachments/assets/2fb3cffe-d5bf-4395-8726-4c74d32705a9)</a>
+
+
 The second edition of the digital zine created by the first-year master's students in Contextual Design at Design Academy Eindhoven in May 2025.
 
 ## Acknowledgements
