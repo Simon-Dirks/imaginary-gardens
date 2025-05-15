@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { NgIf } from '@angular/common';
 import {
   DayNightService,
   DayNightMode,
@@ -8,7 +7,7 @@ import {
 @Component({
   selector: 'app-day-night-button',
   standalone: true,
-  imports: [NgIf],
+  imports: [],
   templateUrl: './day-night-button.component.html',
   styleUrl: './day-night-button.component.scss',
 })
