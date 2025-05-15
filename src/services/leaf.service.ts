@@ -11,6 +11,14 @@ export class LeafService {
 
   public leavesData = [
     {
+      imageUrl: '/img/leaves/15_DaHyeonKang.png',
+      link: 'https://thecouch.hethem.nl/silent-plants/',
+      title: 'Silent Plants',
+      authorName: 'Da Hyeon Kang',
+      dx: -616,
+      dy: -5,
+    },
+    {
       imageUrl: '/img/leaves/1_dalilah.png',
       link: 'https://thecouch.hethem.nl/rooted-in-thin-air/',
       title: 'Rooted in thin air',
@@ -35,12 +43,28 @@ export class LeafService {
       dy: -238,
     },
     {
+      imageUrl: '/img/leaves/16_JaeYoung.png',
+      link: 'https://thecouch.hethem.nl/cultivating-the-garden-of-hospitality/',
+      title: 'Cultivating the Garden of Hospitality',
+      authorName: 'Jaeyoung Lee',
+      dx: 51,
+      dy: -193,
+    },
+    {
       imageUrl: '/img/leaves/4_JanelleLinda.png',
       link: 'https://thecouch.hethem.nl/dead-ends/',
       title: 'Dead Ends',
       authorName: 'Janelle Cruz + Linda Učelniece',
       dx: -69,
       dy: 284,
+    },
+    {
+      imageUrl: '/img/leaves/18_Mado.png',
+      link: 'https://thecouch.hethem.nl/the-green-in-the-city-center/',
+      title: 'The green in the city center',
+      authorName: 'Mado Nullans',
+      dx: -217,
+      dy: -313,
     },
     {
       imageUrl: '/img/leaves/1_MariaHelena.png',
@@ -83,6 +107,14 @@ export class LeafService {
       dy: 110,
     },
     {
+      imageUrl: '/img/leaves/17_Sade.png',
+      link: 'https://thecouch.hethem.nl/the-bush/',
+      title: 'The Bush',
+      authorName: 'Sade Ekwedike',
+      dx: -244,
+      dy: -19,
+    },
+    {
       imageUrl: '/img/leaves/10_Sarah_Alena.png',
       link: 'https://thecouch.hethem.nl/a-tapestry-of-traces/',
       title: 'A Tapestry of Traces',
@@ -99,6 +131,14 @@ export class LeafService {
       dy: 122,
     },
     {
+      imageUrl: '/img/leaves/19_Soyeon.png',
+      link: 'https://thecouch.hethem.nl/tangerine-kims-memory/',
+      title: "Tangerine Kim's memory",
+      authorName: 'Soyeon Kim',
+      dx: -202,
+      dy: -147,
+    },
+    {
       imageUrl: '/img/leaves/12_Yosuke.png',
       link: 'https://thecouch.hethem.nl/the-algorithmic-garden/',
       title: 'The Algorithmic Garden',
@@ -113,46 +153,6 @@ export class LeafService {
       authorName: 'Yuji Inoue',
       dx: -362,
       dy: -123,
-    },
-    {
-      imageUrl: '/img/leaves/15_DaHyeonKang.png',
-      link: 'https://thecouch.hethem.nl/silent-plants/',
-      title: 'Silent Plants',
-      authorName: 'Da Hyeon Kang',
-      dx: -616,
-      dy: -5,
-    },
-    {
-      imageUrl: '/img/leaves/16_JaeYoung.png',
-      link: 'https://thecouch.hethem.nl/cultivating-the-garden-of-hospitality/',
-      title: 'Cultivating the Garden of Hospitality',
-      authorName: 'Jaeyoung Lee',
-      dx: 51,
-      dy: -193,
-    },
-    {
-      imageUrl: '/img/leaves/17_Sade.png',
-      link: 'https://thecouch.hethem.nl/the-bush/',
-      title: 'The Bush',
-      authorName: 'Sade Ekwedike',
-      dx: -244,
-      dy: -19,
-    },
-    {
-      imageUrl: '/img/leaves/18_Mado.png',
-      link: 'https://thecouch.hethem.nl/the-green-in-the-city-center/',
-      title: 'The green in the city center',
-      authorName: 'Mado Nullans',
-      dx: -217,
-      dy: -313,
-    },
-    {
-      imageUrl: '/img/leaves/19_Soyeon.png',
-      link: 'https://thecouch.hethem.nl/tangerine-kims-memory/',
-      title: "Tangerine Kim's memory",
-      authorName: 'Soyeon Kim',
-      dx: -202,
-      dy: -147,
     },
   ];
 
