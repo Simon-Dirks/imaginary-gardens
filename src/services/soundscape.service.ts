@@ -28,7 +28,7 @@ export class SoundscapeService implements OnDestroy {
 
   constructor() {
     this.daySoundscape = new Howl({
-      src: ['/audio/day-soundscape.mp3'],
+      src: ['/imaginary-gardens-2/audio/day-soundscape.mp3'],
       loop: true,
       volume: 1,
       preload: true,
@@ -43,7 +43,7 @@ export class SoundscapeService implements OnDestroy {
     });
 
     this.nightSoundscape = new Howl({
-      src: ['/audio/night-soundscape.mp3'],
+      src: ['/imaginary-gardens-2/audio/night-soundscape.mp3'],
       loop: true,
       volume: 1,
       preload: true,

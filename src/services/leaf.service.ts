@@ -10,7 +10,7 @@ export class LeafService {
 
   public leavesData: LeafModel[] = [
     {
-      imageUrl: '/img/leaves/15_DaHyeonKang.png',
+      imageUrl: '/imaginary-gardens-2/img/leaves/15_DaHyeonKang.png',
       link: 'https://thecouch.hethem.nl/silent-plants/',
       title: 'Silent Plants',
       authorName: 'Da Hyeon Kang',
@@ -18,7 +18,7 @@ export class LeafService {
       dy: -5,
     },
     {
-      imageUrl: '/img/leaves/1_dalilah.png',
+      imageUrl: '/imaginary-gardens-2/img/leaves/1_dalilah.png',
       link: 'https://thecouch.hethem.nl/rooted-in-thin-air/',
       title: 'Rooted in thin air',
       authorName: 'Dalila Fermezza',
@@ -26,7 +26,7 @@ export class LeafService {
       dy: 263,
     },
     {
-      imageUrl: '/img/leaves/2_flora.png',
+      imageUrl: '/imaginary-gardens-2/img/leaves/2_flora.png',
       link: 'https://thecouch.hethem.nl/dragon-fruit/',
       title: 'Dragon Fruit',
       authorName: 'Flora Moneka Goulidei',
@@ -34,7 +34,7 @@ export class LeafService {
       dy: 286,
     },
     {
-      imageUrl: '/img/leaves/3_Ismael.png',
+      imageUrl: '/imaginary-gardens-2/img/leaves/3_Ismael.png',
       link: 'https://thecouch.hethem.nl/the-mirror/',
       title: 'The Mirror',
       authorName: 'Ismael Abou El Mouroua',
@@ -42,7 +42,7 @@ export class LeafService {
       dy: -238,
     },
     {
-      imageUrl: '/img/leaves/16_JaeYoung.png',
+      imageUrl: '/imaginary-gardens-2/img/leaves/16_JaeYoung.png',
       link: 'https://thecouch.hethem.nl/cultivating-the-garden-of-hospitality/',
       title: 'Cultivating the Garden of Hospitality',
       authorName: 'Jaeyoung Lee',
@@ -50,7 +50,7 @@ export class LeafService {
       dy: -193,
     },
     {
-      imageUrl: '/img/leaves/4_JanelleLinda.png',
+      imageUrl: '/imaginary-gardens-2/img/leaves/4_JanelleLinda.png',
       link: 'https://thecouch.hethem.nl/dead-ends/',
       title: 'Dead Ends',
       authorName: 'Janelle Cruz<br/>Linda Učelniece',
@@ -58,7 +58,7 @@ export class LeafService {
       dy: 284,
     },
     {
-      imageUrl: '/img/leaves/18_Mado.png',
+      imageUrl: '/imaginary-gardens-2/img/leaves/18_Mado.png',
       link: 'https://thecouch.hethem.nl/the-green-in-the-city-center/',
       title: 'The green in the city center',
       authorName: 'Mado Nullans',
@@ -66,7 +66,7 @@ export class LeafService {
       dy: -313,
     },
     {
-      imageUrl: '/img/leaves/1_MariaHelena.png',
+      imageUrl: '/imaginary-gardens-2/img/leaves/1_MariaHelena.png',
       link: 'https://thecouch.hethem.nl/five-stars/',
       title: 'Five stars',
       authorName: 'María Merino Arzoz<br/>Helena Escudero Leiva',
@@ -74,7 +74,7 @@ export class LeafService {
       dy: 167,
     },
     {
-      imageUrl: '/img/leaves/19_Marie.png',
+      imageUrl: '/imaginary-gardens-2/img/leaves/19_Marie.png',
       link: 'https://thecouch.hethem.nl/from-minerals-to-pixel/',
       title: 'from minerals to pixel',
       authorName: 'Marie Garreyn',
@@ -82,7 +82,7 @@ export class LeafService {
       dy: 266,
     },
     {
-      imageUrl: '/img/leaves/7_Mia.png',
+      imageUrl: '/imaginary-gardens-2/img/leaves/7_Mia.png',
       link: 'https://thecouch.hethem.nl/passiflora-my-new-roommate/',
       title: 'Passiflora',
       authorName: 'Mia Domenech Puras',
@@ -90,7 +90,7 @@ export class LeafService {
       dy: -48,
     },
     {
-      imageUrl: '/img/leaves/6_Ning.png',
+      imageUrl: '/imaginary-gardens-2/img/leaves/6_Ning.png',
       link: 'https://thecouch.hethem.nl/what-remains-shall-appear/',
       title: 'What remains shall appear',
       authorName: 'Ning-Ju Hsu',
@@ -98,7 +98,7 @@ export class LeafService {
       dy: 131,
     },
     {
-      imageUrl: '/img/leaves/8_Rafaela.png',
+      imageUrl: '/imaginary-gardens-2/img/leaves/8_Rafaela.png',
       link: 'https://thecouch.hethem.nl/canibalesmideseo/',
       title: 'Gardens of desires',
       authorName: 'Rafaela Aguilar Bostock',
@@ -106,7 +106,7 @@ export class LeafService {
       dy: 110,
     },
     {
-      imageUrl: '/img/leaves/17_Sade.png',
+      imageUrl: '/imaginary-gardens-2/img/leaves/17_Sade.png',
       link: 'https://thecouch.hethem.nl/the-bush/',
       title: 'The Bush',
       authorName: 'Sade Ekwedike',
@@ -114,7 +114,7 @@ export class LeafService {
       dy: -19,
     },
     {
-      imageUrl: '/img/leaves/10_Sarah_Alena.png',
+      imageUrl: '/imaginary-gardens-2/img/leaves/10_Sarah_Alena.png',
       link: 'https://thecouch.hethem.nl/a-tapestry-of-traces/',
       title: 'A Tapestry of Traces',
       authorName: 'Sarah Maurer<br/>Alena Halmes',
@@ -122,7 +122,7 @@ export class LeafService {
       dy: 163,
     },
     {
-      imageUrl: '/img/leaves/11_Silver.png',
+      imageUrl: '/imaginary-gardens-2/img/leaves/11_Silver.png',
       link: 'https://thecouch.hethem.nl/kalinixta-mesoskeve/',
       title: 'kalinixta mesoskeve',
       authorName: 'Silver Giannakidi',
@@ -130,7 +130,7 @@ export class LeafService {
       dy: 122,
     },
     {
-      imageUrl: '/img/leaves/19_Soyeon.png',
+      imageUrl: '/imaginary-gardens-2/img/leaves/19_Soyeon.png',
       link: 'https://thecouch.hethem.nl/tangerine-kims-memory/',
       title: "Tangerine Kim's memory",
       authorName: 'Soyeon Kim',
@@ -138,7 +138,7 @@ export class LeafService {
       dy: -147,
     },
     {
-      imageUrl: '/img/leaves/12_Yosuke.png',
+      imageUrl: '/imaginary-gardens-2/img/leaves/12_Yosuke.png',
       link: 'https://thecouch.hethem.nl/the-algorithmic-garden/',
       title: 'The Algorithmic Garden',
       authorName: 'Yosuke Matsushita',
@@ -146,7 +146,7 @@ export class LeafService {
       dy: 2,
     },
     {
-      imageUrl: '/img/leaves/13_yuji.png',
+      imageUrl: '/imaginary-gardens-2/img/leaves/13_yuji.png',
       link: 'https://thecouch.hethem.nl/beautiful-rain/',
       title: 'Beautiful Rain',
       authorName: 'Yuji Inoue',

@@ -1,18 +1,20 @@
 <button
   class="w-12 h-12 rounded-full flex items-center justify-center focus:outline-none transition-all duration-300 mb-4"
-  style="cursor: url('/img/ant-hover.png') 28 10, pointer !important"
+  style="
+    cursor: url('/imaginary-gardens-2/img/ant-hover.png') 28 10, pointer !important;
+  "
   (click)="toggleMode()"
 >
   <span class="relative w-12 h-12 block">
     <img
-      src="/img/day-night/day.png"
+      src="/imaginary-gardens-2/img/day-night/day.png"
       alt="Day mode"
       class="w-12 h-12 absolute inset-0 transition-opacity duration-2000"
       [style.opacity]="mode === 'day' ? 1 : 0"
       [style.pointerEvents]="mode === 'day' ? 'auto' : 'none'"
     />
     <img
-      src="/img/day-night/night.png"
+      src="/imaginary-gardens-2/img/day-night/night.png"
       alt="Night mode"
       class="w-12 h-12 absolute inset-0 transition-opacity duration-2000"
       [style.opacity]="mode === 'night' ? 1 : 0"
